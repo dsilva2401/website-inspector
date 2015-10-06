@@ -13,7 +13,7 @@ Guppy: A node js framework based on ExpressJS
 
 ##### *Models*
 
-Contains all persistent models, natively use ![SequelizeJS](https://github.com/sequelize/sequelize), a promise-based Node.js/io.js ORM for Postgres, MySQL, MariaDB, SQLite and Microsoft SQL Server.
+Contains all persistent models, natively use [SequelizeJS](https://github.com/sequelize/sequelize), a promise-based Node.js/io.js ORM for Postgres, MySQL, MariaDB, SQLite and Microsoft SQL Server.
 
 ```js
 module.exports = function ($config, $methods, Sequelize) {
