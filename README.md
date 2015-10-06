@@ -26,6 +26,7 @@ src/ 			# App source files
 
 *Each arrow represents the connection of the modules, for example `Init` module just have access to `Methods` module.*
 
+
 Module name | Access to	| Used by | Description
 ------------|-----------|---------|------------
 Global | Config | Methods | App global variables
