@@ -6,14 +6,12 @@ the goal is to structure code and promote good programming practices providing a
 
 ## Seed structure
 
-All configuration is done inside `config.js` file and it could be injected to any other module, this helps to organize code and simplify maintenance.
-
 ```bash
-app.js
-config.js
-public/..
-src/
-	init/..	
+app.js 			# Main file
+config.js 		# App configuration
+public/.. 		# Contains public static files
+src/ 			# App source files
+	init/..
 	front/..
 	global/..
 	models/..
