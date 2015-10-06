@@ -1,8 +1,26 @@
 Guppy: A node js framework based on ExpressJS
 -----------------------------------------------------
 
-*Guppy is an open source NodeJS Framework based on ExpressJS, the goal is to structure code and promote good programming practices providing a seed and some rules.*
+*Guppy is an open source NodeJS Framework based on ExpressJS,
+the goal is to structure code and promote good programming practices providing a seed and some rules.*
 
+## Seed structure
+
+All configuration is done inside `config.js` file and it could be injected to any other module, this helps to organize code and simplify maintenance.
+
+´´´bash
+app.js
+config.js
+public/..
+src/
+	init/..	
+	front/..
+	global/..
+	models/..
+	routes/..
+	methods/..
+	settings/..
+´´´
 
 ## Modules
 
@@ -10,51 +28,6 @@ Guppy: A node js framework based on ExpressJS
 
 *Each arrow represents the connection of the modules, for example `Init` module just have access to `Methods` module.*
 
-
-#### *Models*
-
-Contains all persistent models, natively use [SequelizeJS](https://github.com/sequelize/sequelize), a promise-based Node.js/io.js ORM for Postgres, MySQL, MariaDB, SQLite and Microsoft SQL Server.
-
-```js
-	module.exports = function ($config, $methods, Sequelize) {
-
-		// Database configuration
-			var dbConfig = $config.databases['main'][$config.env];
-
-		// Create database
-			var db = new Sequelize(
-				dbConfig.database,
-				dbConfig.username,
-				dbConfig.password,
-				dbConfig.options
-			);
-
-
-			// Models
-
-				var ParentModel = db.define('ParentModel', {
-					attrX: Sequelize.INTEGER,
-					attrY: Sequelize.INTEGER,
-					attrZ: Sequelize.INTEGER
-				});
-
-				var SonModel = db.define('SonModel', {
-					attrX: Sequelize.INTEGER,
-					attrY: Sequelize.INTEGER,
-					attrZ: Sequelize.INTEGER
-				});
-
-			// Relations
-
-				SonModel.belongsTo( ParentModel );
-
-
-		// Sync database
-			db.sync();
-
-		return db;
-	}
-```
 
 ## Links
 - http://sequelize.readthedocs.org/en/latest/
