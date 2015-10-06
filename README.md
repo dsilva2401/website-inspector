@@ -8,7 +8,7 @@ the goal is to structure code and promote good programming practices providing a
 
 All configuration is done inside `config.js` file and it could be injected to any other module, this helps to organize code and simplify maintenance.
 
-´´´bash
+```bash
 app.js
 config.js
 public/..
@@ -20,7 +20,7 @@ src/
 	routes/..
 	methods/..
 	settings/..
-´´´
+```
 
 ## Modules
 
