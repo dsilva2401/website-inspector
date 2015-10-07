@@ -11,20 +11,20 @@
 	app.config( require('./config') );
 
 
-// App Settings
-	app.init( require('./src/settings') );
-
-
 // Setup global
 	app.run( require('./src/global') );
 
 
+// App settings
+	app.init( require('./src/settings') );
+
+
+// Setup models
+	app.addDatabase('main', require('./src/models'));
+
+
 // Setup methods
 	app.run( require('./src/methods') );
-
-
-// Setup database
-	app.addDatabase('main', require('./src/models'));
 
 
 // Setup routes

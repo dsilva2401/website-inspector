@@ -1,25 +1,19 @@
 var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var methodOverride = require('method-override');
-var compress = require('compression');
-var logger = require('morgan');
-
-
 module.exports = function ($app, $config, $express, $global) {
 
 	// Set parsers
-	$app.use(bodyParser.json());
-	$app.use(bodyParser.urlencoded({ extended: true }));
-	$app.use(cookieParser());
+	$app.use( $global.bodyParser.json() );
+	$app.use( $global.bodyParser.urlencoded({ extended: true }) );
+	$app.use( $global.cookieParser() );
 
 	// Set logger
-	$app.use(logger('dev'));
+	$app.use( $global.logger('dev') );
 
 	// Compress all requests
-	$app.use(compress());
+	$app.use( $global.compress() );
 
 	// Set static folder
-	$app.use($express.static($config.publicDir));
+	$app.use( $express.static($config.publicDir) );
 
 	// Set front components status folder
 	$app.use('/front', $express.static($config.frontDir));

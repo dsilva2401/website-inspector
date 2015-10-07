@@ -1,10 +1,11 @@
-module.exports = function ($global) {
+module.exports = function ($global, $config) {
 	
-	// Dependencies
-	var $ = {};
-	$.global = $global;
-
-	// Error
-	$global.Error = require('./Error')($);
+	$global.cookieParser = require('cookie-parser');
+	$global.bodyParser = require('body-parser');
+	$global.methodOverride = require('method-override');
+	$global.compress = require('compression');
+	$global.logger = require('morgan');
+	$global.nodemailer = require('nodemailer');
+	$global.Sequelize = require('sequelize');
 
 }

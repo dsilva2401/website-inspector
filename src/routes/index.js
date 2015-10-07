@@ -1,4 +1,4 @@
-module.exports = function ( $express, $app, $database, $methods, $config ) {
+module.exports = function ( $express, $app, $methods, $config ) {
 
 	// Controllers dependencies
 		var $ = {};
@@ -13,16 +13,6 @@ module.exports = function ( $express, $app, $database, $methods, $config ) {
 
 	// Controllers
 		var Middle = require('./Middle')($);
-		var Auth = require('./Auth')($);
-		var Views = require('./Views')($);
-		var Person = require('./Person')($);
-		var GeoZone = require('./GeoZone')($);
-		var Role = require('./Role')($);
-		var ItemGroup = require('./ItemGroup')($);
-		var Item = require('./Item')($);
-		var Features = require('./Features')($);
-		var Staff = require('./Staff')($);
-		var Employee = require('./Employee')($);
 
 	// Views
 		viewsRouter.get('/', Views.redirectHome);
@@ -44,44 +34,7 @@ module.exports = function ( $express, $app, $database, $methods, $config ) {
 		// Person
 		apiRouter.get('/me', Person.meGet);
 		apiRouter.put('/me', Person.mePut);
-		apiRouter.get('/person', Person.getAll);
-		apiRouter.get('/person/:personId', Person.getOne);
-		// apiRouter.post('/person', Person.post);
-		apiRouter.put('/person/:personId', Person.put);
-		// GeoZone
-		apiRouter.get('/geozone', GeoZone.get);
-		apiRouter.get('/geozone/:geozoneId', GeoZone.get);
-		apiRouter.put('/geozone/:geozoneId', GeoZone.put);
-		apiRouter.post('/geozone', GeoZone.post);
-		apiRouter.post('/geozone/:geozoneId', GeoZone.post);
-		apiRouter.delete('/geozone/:geozoneId', GeoZone.delete);
-		// Role
-		apiRouter.get('/roles/all', Role.getAll);
-		apiRouter.get('/role', Role.get);
-		apiRouter.get('/role/:roleId', Role.get);
-		apiRouter.put('/role/:roleId', Role.put);
-		apiRouter.post('/role', Role.post);
-		apiRouter.post('/role/:roleId', Role.post);
-		apiRouter.delete('/role/:roleId', Role.delete);
-		// Item groups
-		apiRouter.get('/item-group', ItemGroup.getAll);
-		apiRouter.get('/item-group/:itemgroupId', ItemGroup.getOne);
-		apiRouter.put('/item-group/:itemgroupId', ItemGroup.put);
-		apiRouter.post('/item-group', ItemGroup.post);
-		apiRouter.delete('/item-group/:itemgroupId', ItemGroup.delete);
-		// Item
-		apiRouter.get('/item-group/:itemgroupId/item', Item.getAll);
-		apiRouter.get('/item/:itemId', Item.getOne);
-		apiRouter.put('/item/:itemId', Item.put);
-		apiRouter.post('/item-group/:itemgroupId/item', Item.post);
-		apiRouter.delete('/item/:itemId', Item.delete);
-		// Available Features
-		apiRouter.get('/features', Features.getAll);
-		// Staff
-		apiRouter.get('/staff/pending', Staff.getAllPending);
-		apiRouter.get('/staff/pending/:pendingId', Staff.getOnePending);
-		apiRouter.post('/staff/register', Staff.postPending);
-		apiRouter.post('/employee', Employee.post);
+
 		// Middle post
 		apiRouter.all('/*', Middle.postAPI);
 
