@@ -1,0 +1,38 @@
+* {
+	font-family: 'Roboto', sans-serif;
+}
+
+button:focus {
+	outline: none;
+}
+
+.background-a {
+	background: #222;
+}
+
+.background-b {
+	background: #555;
+}
+
+.background-c {
+	background: #eee;
+}
+
+.ppk-color1 {
+	color: #c60070;
+}
+
+.ppk-color2 {
+	color: #009c9c;
+}
+
+.ppk-color3 {
+	color: #ffd300;
+}
+
+.soft-05 {
+	-webkit-transition-duration: 0.5s;
+    -moz-transition-duration: 0.5s;
+    -o-transition-duration: 0.5s;
+    -ms-transition-duration: 0.5s;
+}

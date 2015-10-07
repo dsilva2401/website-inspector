@@ -1,0 +1,20 @@
+.content{
+	margin-left: 40px;
+}
+
+.form{
+	margin-left: 20px;
+}
+.buttom:hover{
+	color :white;
+}
+
+.buttom{
+	color:black;
+}
+
+.td-table:hover{
+	background-color: #009C9C;
+	font-weight: bold;
+	color : #D2D3D2;
+}

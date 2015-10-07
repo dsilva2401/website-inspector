@@ -1,0 +1,88 @@
+<div sticky>
+    <div class="row header color5">
+      <div class="col-xs-12">
+        <div class="user pull-right">
+          <div class="item dropdown">          
+            <ul class="dropdown-menu dropdown-menu-right">
+              <li class="dropdown-header">
+                Usuario
+              </li>
+              <li class="divider"></li>
+              <li class="link">
+                <a href="">
+                  Perfil
+                </a>
+              </li>
+              <li class="link">
+                <a href="">
+                  Item2
+                </a>
+              </li>
+              <li class="divider"></li>
+              <li class="link">
+                <a href="">
+                  Salir
+                </a>
+              </li>
+            </ul>
+          </div>        
+        </div>          
+        <div class="meta row">
+          <!--img class="logo col-xs-2 col-md-2" src="img/logo.png"-->
+          <div class="col-md-6 page textcolor2">
+            Home&nbsp; <span class="currentModule">{{ models.currentModule || '' }}<span>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+  <!--HEADER-->
+
+  <div id="page-wrapper" ng-class="{'open': toggle}">
+    <div id="content-wrapper">
+      <div class="page-content">  
+
+        <!--SLIDEBAR-->                 
+        <div id="sidebar-wrapper" class="color1">
+          <ul class="sidebar">
+            <li class="sidebar-main">
+              <a style="cursor:default">
+                Panel de Control
+              </a>
+            </li>
+            <div ng-repeat="m in models.availableModules">
+              <li ng-click="methods.colap(m)" class="sidebar-title"><span>{{m.name}}</span></li>
+
+              <div class="fadein fadeout" ng-show="m.shown">                
+                <li ng-click="methods.goToModule(m,a)" ng-repeat="a in m.actions" class="sidebar-list">
+                  <a href="">{{ a.name }}<span class="menu-icon fa fa-table"></span></a>
+                </li>
+
+              </div>
+            </div>            
+          </ul>
+
+          <div class="btn-group dropup sidebar-footer" dropdown>            
+              <div class="pointer col-xs-12 textcolor2" dropdown-toggle>
+                  <b>{{ models.currentUser.name }}</b>
+              </div>
+              <ul class="dropdown-menu downmenu">
+                <li><a href="#">Perfil</a></li>
+                <li><a href="#">Accesos</a></li>
+                <li><a href="#">Permisos</a></li>
+                <li class="divider"></li>
+                <li><a ng-click="methods.logout()" href="#">Log Out</a></li>
+              </ul>
+            </div>     
+          </div>
+        <!--SLIDEBAR-->
+
+        <!-- CONTENT -->
+        <div class="app-modules-container" ui-view></div>
+        <!-- CONTENT -->
+
+      </div>
+    </div>
+
+

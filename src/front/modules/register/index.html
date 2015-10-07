@@ -1,0 +1,132 @@
+<html>
+	<head>
+		<title>Register Form</title>
+		<link href="/front/libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">	
+		<style type="text/css">
+			.titles{
+				text-align: center;
+			}
+			.padd{
+				padding: 40px;
+				margin-top: 30%;
+			}
+		</style>
+	</head>
+	<body ng-app="register" ng-controller="registerController">
+
+	<div class="container">
+	    <div class="col-xs-4 col-xs-offset-4">
+			<div class="row padd">
+				<div class="titles">
+		    		<h2>Registro</h2>					
+		    	</div>
+			    <div ng-if="models.errorMsg" class="alert alert-danger">{{models.errorMsg}}</div>
+			    <form class="form-signin" ng-submit="methods.register()">
+			        <div class="form-group"> 
+			            <label>Nombre(s)</label>
+			            <input
+			            	type="text"
+			            	placeholder="Nombre"
+			            	class="form-control"
+			            	ng-model="models.name"
+			            	ng-required="true"
+			            >
+			            <span
+			            	ng-show="models.name.$dirty"
+			            	class="help-block"
+			            >Campo requerido</span>
+			        </div>
+
+			        <div class="form-group"> 
+			            <label>Apellidos</label>
+			            <input
+			            	type="text"
+			            	placeholder="Apellidos"
+			            	class="form-control"
+			            	ng-model="models.lastname"
+			            	ng-required="true"
+			            >
+			            <span
+			            	ng-show="models.lastname.$dirty"
+			            	class="help-block"
+			            >Campo requerido</span>
+			        </div>
+
+			        <div class="form-group"> 
+			            <label>Usuario</label>
+			            <input
+			            	type="text"
+			            	placeholder="Usuario"
+			            	class="form-control"
+			            	ng-model="models.username"
+			            	ng-required="true"
+			            >
+			            <span
+			            	ng-show="models.username.$dirty"
+			            	class="help-block"
+			            >Campo requerido</span>
+			        </div>
+
+			        <div class="form-group"> 
+			            <label>Correo Electronico</label>
+			            <input
+			            	type="text"
+			            	placeholder="Correo Electronico"
+			            	class="form-control"
+			            	ng-model="models.email"
+			            	ng-required="true"
+			            >
+			            <span
+			            	ng-show="models.email.$dirty"
+			            	class="help-block"
+			            >Campo requerido</span>
+			        </div>
+
+			        <div class="form-group"> 
+			            <label>Contrasena</label>
+			            <input
+			            	type="password"
+			            	placeholder="Contrasena"
+			            	class="form-control"
+			            	ng-model="models.password"
+			            	ng-required="true"
+			            >
+			            <span
+			            	ng-show="models.password.$dirty"
+			            	class="help-block"
+			            >Campo requerido</span>
+			        </div>
+
+			        <div class="form-group"> 
+			            <label>Reingresar Contrasena</label>
+			            <input
+			            	type="password"
+			            	placeholder="Reingresar Contrasena"
+			            	class="form-control"
+			            	ng-model="models.repassword"
+			            	ng-required="true"
+			            >
+			            <span
+			            	ng-show="models.repassword.$dirty"
+			            	class="help-block"
+			            >Campo requerido</span>
+			        </div>
+
+			        <div class="form-actions">
+			            <button
+			            	type="submit"
+			            	class="btn btn-lg btn-primary btn-block"
+							ng-disabled="models.processingRegister"
+			            >{{ !models.processingRegister ? 'Registrar' : 'Procesando registro..' }}</button>
+			        </div>
+			    </form>
+			</div>
+		</div>
+	</div>
+
+		<script src="/front/libs/angular/angular.js"></script>
+		<script src="/front/libs/resources/src/resources.js"></script>
+		<script src="/front/modules/register/script.js"></script>
+	</body>
+
+</html>

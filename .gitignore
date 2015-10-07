@@ -2,6 +2,9 @@
 logs
 *.log
 
+# Front libs
+src/front/libs/*
+
 # Runtime data
 pids
 *.pid
