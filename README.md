@@ -37,6 +37,9 @@ Routes | Config, Methods | - | App available routes
 Config | Global, Init, Models, Methods, Routes, Settings | - | App configuration
 Settings | Config | - | App settings
 
+## Request process
+
+![](docs/request-flow.png)
 
 ## Links
 - http://sequelize.readthedocs.org/en/latest/
