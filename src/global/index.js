@@ -7,5 +7,6 @@ module.exports = function ($global, $config) {
 	$global.logger = require('morgan');
 	$global.nodemailer = require('nodemailer');
 	$global.Sequelize = require('sequelize');
+	$global.path = require('path');
 
 }

@@ -7,6 +7,14 @@ module.exports = {
 	},
 	publicDir: 'public',
 	frontDir: 'src/front',
+	rootUser: {
+		name: 'Admin',
+		username: 'admin',
+		password: 'password',
+		email: 'admin@domain.com',
+		sex: 'm',
+		birthday: new Date(1993, 0, 24)
+	},
 	databases: {
 		main: {
 			dev: {

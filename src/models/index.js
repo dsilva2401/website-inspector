@@ -15,13 +15,26 @@ module.exports = function ($config, $methods, $global) {
 		);
 
 	// Models
-		var ParentModel = db.define('ParentModel', {
-			attr: DataTypes.STRING
+		var Person = db.define('Person', {
+			name: DataTypes.STRING,
+			email: DataTypes.STRING,
+			sex: DataTypes.CHAR,
+			birthday: DataTypes.DATE
+		});
+
+		var Credential = db.define('Credential', {
+			email: DataTypes.STRING,
+			username: DataTypes.STRING,
+			password: DataTypes.STRING
+		});
+
+		var SessionKey = db.define('SessionKey', {
+			key: DataTypes.STRING
 		});
 
 	// Relations
-		PendingEmployee.belongsTo( Role );
-
+		Credential.belongsTo( Person );
+		SessionKey.belongsTo( Person );
 
 	// Sync database
 		db.sync();
