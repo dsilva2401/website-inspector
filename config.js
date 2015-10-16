@@ -1,12 +1,12 @@
 module.exports = {
 	env: 'dev',
 	httpServer: {
-		domain: 'localhost:8080',
+		domain: 'http://localhost:8080',
 		host: '0.0.0.0',
 		port: 8080
 	},
 	httpsServer: {
-		domain: 'localhost:8081',
+		domain: 'https://localhost:8081',
 		host: '0.0.0.0',
 		port: 8081
 	},

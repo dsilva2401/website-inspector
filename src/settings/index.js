@@ -1,5 +1,5 @@
 var cookieParser = require('cookie-parser');
-module.exports = function ($app, $config, $express, $global) {
+module.exports = function ($app, $config, $express, $global, $httpServer) {
 
 	// Set parsers
 	$app.use( $global.bodyParser.json() );
@@ -25,6 +25,15 @@ module.exports = function ($app, $config, $express, $global) {
 		res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
 		if ('OPTIONS' == req.method) res.send(200);
 		else next();
+	});
+
+	// Redirect all to https
+	$app.all('/*', function (req, res, next) {
+		if (req.protocol == 'https') {
+			next();
+			return;
+		}
+		res.redirect($config.httpsServer.domain+req.originalUrl);
 	});
 
 }
