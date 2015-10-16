@@ -28,12 +28,12 @@ module.exports = function ($app, $config, $express, $global, $httpServer) {
 	});
 
 	// Redirect all to https
-	$app.all('/*', function (req, res, next) {
+	/*$app.all('/*', function (req, res, next) {
 		if (req.protocol == 'https') {
 			next();
 			return;
 		}
 		res.redirect($config.httpsServer.domain+req.originalUrl);
-	});
+	});*/
 
 }

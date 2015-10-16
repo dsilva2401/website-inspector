@@ -13,12 +13,13 @@ module.exports = function ( $express, $app, $methods, $config, $global ) {
 
 	// Controllers
 		var Views = require('./Views')($);
+		var Auth = require('./Auth')($);
 
 	// Views
 		viewsRouter.get('/login', Views.login);
 
 	// Auth
-
+		authRouter.post('/login', Auth.login );
 
 	// API
 

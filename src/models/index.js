@@ -17,14 +17,14 @@ module.exports = function ($config, $methods, $global) {
 	// Models
 		var Person = db.define('Person', {
 			name: DataTypes.STRING,
-			email: DataTypes.STRING,
+			email: { type: DataTypes.STRING, unique: true },
 			sex: DataTypes.CHAR,
 			birthday: DataTypes.DATE
 		});
 
 		var Credential = db.define('Credential', {
-			email: DataTypes.STRING,
-			username: DataTypes.STRING,
+			email: { type: DataTypes.STRING, unique: true },
+			username: { type: DataTypes.STRING, unique: true },
 			password: DataTypes.STRING
 		});
 

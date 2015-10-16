@@ -1,6 +1,10 @@
 module.exports = function ( $methods, $config ) {
 	
-	// Create root user
-	$methods.Person.createRootUser();
+	setTimeout(function () {
+
+		// Create root user
+		$methods.Person.createRootUser();
+		
+	},2000);
 
 }
