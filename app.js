@@ -1,10 +1,28 @@
 
 // Import modules
+	var https = require('https');
 	var ExpressWrapper = require('express-wrapper');
+	var express = require('express');
+	var fs = require('fs');
+	var pem = require('pem');
+
+
+// Express app
+	var app = express();
+
+
+// Create HTTPS Server
+	var server = https.Server({
+		key: fs.readFileSync('keys/key.pem').toString(),
+		cert: fs.readFileSync('keys/cert.pem').toString()
+	}, app);
 
 
 // Create app
-	var app = new ExpressWrapper();
+	var app = new ExpressWrapper({
+		server: server,
+		app: app
+	});
 
 
 // Setup app config
