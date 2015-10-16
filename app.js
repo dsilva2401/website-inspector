@@ -4,7 +4,9 @@
 
 
 // Create app
-	var app = new ExpressWrapper();
+	var app = new ExpressWrapper({
+		httpsOptions: {	days: 3650, selfSigned: true }
+	});
 
 
 // Setup app config
@@ -36,7 +38,4 @@
 
 
 // Start server
-	setTimeout(function (argument) {
-		// body...
-		app.up();
-	},100);
+	app.up();
