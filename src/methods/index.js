@@ -9,6 +9,9 @@ module.exports = function ($methods, $database, $q, $config, $global) {
 		$.methods = $methods;
 
 	// Methods
+		$methods.Useful = require('./Useful')($);
+		$methods.Response = require('./Response')($);
 		$methods.Person = require('./Person')($);
+		$methods.Auth = require('./Auth')($);
 
 }
