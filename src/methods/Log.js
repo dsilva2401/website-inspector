@@ -1,25 +1,32 @@
 module.exports = function ($) {
 	var Log = {};
+	var models = $.database.main.models;
 	
-	Log.successResponse = function (req, res, next) {
-		return function (data) {
-			res.status(200);
-			res.json(data);
-		}
+	Log.successResponse = function (req, res) {
+		models.SuccessResponseLog.create({
+			PersonId: (req.currentPerson || {}).id || null,
+			method: req.method,
+			url: req.originalUrl,
+			duration: Date.now() - req.requestTimestamp
+		});
 	}
 
-	Log.serverError = function (req, res, next) {
-		return function (error) {
-			res.status(res.statusCode || 500);
-			res.json(error);
-		}
+	Log.serverError = function (req, res) {
+		models.ServerErrorLog.create({
+			PersonId: (req.currentPerson || {}).id || null,
+			method: req.method,
+			url: req.originalUrl,
+			duration: Date.now() - req.requestTimestamp
+		});
 	}
 
-	Log.clientError = function (req, res, next) {
-		return function (error) {
-			res.status(res.statusCode || 500);
-			res.json(error);
-		}
+	Log.clientError = function (req, res) {
+		models.ClientErrorLog.create({
+			PersonId: (req.currentPerson || {}).id || null,
+			method: req.method,
+			url: req.originalUrl,
+			duration: Date.now() - req.requestTimestamp
+		});
 	}
 
 	return Log;

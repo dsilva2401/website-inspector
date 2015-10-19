@@ -7,7 +7,7 @@
 
 	<body ng-app="app" ng-controller="appController">
 
-		<form>
+		<form ng-submit="methods.submit();">
 
 			<div class="title-container">
 				<h3>Login</h3>
@@ -15,12 +15,12 @@
 
 			<div class="input-container">
 				<p>Email or username</p>
-				<input type="text" placeholder="Email or username">
+				<input type="text" placeholder="Email or username" ng-model="models.username" required>
 			</div>
 
 			<div class="input-container">
 				<p>Password</p>
-				<input type="password" placeholder="Password">
+				<input type="password" placeholder="Password" ng-model="models.password" required>
 			</div>
 
 			<div class="input-container">
