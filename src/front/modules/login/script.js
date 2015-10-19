@@ -9,7 +9,7 @@
 		// Methods
 		$scope.methods.submit = function () {
 			$http.post('/auth/v1/login', {
-				username: $scope.models.username,
+				usernameOrEmail: $scope.models.usernameOrEmail,
 				password: $scope.models.password,
 			})
 			// Success

@@ -8,7 +8,7 @@ module.exports = function ($) {
 		models.Credential.findOne({
 			attributes: ['PersonId'],
 			where: {
-				$or: [ {username: credentials.username}, {email: credentials.email} ],
+				$or: [ {username: credentials.usernameOrEmail}, {email: credentials.usernameOrEmail} ],
 				$and: {password: credentials.password}
 			}
 		})

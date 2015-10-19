@@ -12,8 +12,10 @@ module.exports = function ($) {
 
 	Response.error = function (req, res, next) {
 		return function (error) {
+			var eType;
 			res.status(res.statusCode || 500);
-			if (res.statusCode==500) Log.serverError(req, res);
+			eType = Math.floor(parseInt(res.statusCode)/100);
+			if (eType==5) Log.serverError(req, res);
 			else Log.clientError(req, res);
 			res.json(error);
 		}

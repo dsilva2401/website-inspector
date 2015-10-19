@@ -42,8 +42,7 @@ module.exports = function ($) {
 
 	r.login = function (req, res, next) {
 		Auth.verifyCredentials({
-			username: req.body.username,
-			email: req.body.email,
+			usernameOrEmail: req.body.usernameOrEmail,
 			password: req.body.password
 		})
 		// Success

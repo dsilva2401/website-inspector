@@ -16,7 +16,8 @@ module.exports = function ($) {
 			PersonId: (req.currentPerson || {}).id || null,
 			method: req.method,
 			url: req.originalUrl,
-			duration: Date.now() - req.requestTimestamp
+			duration: Date.now() - req.requestTimestamp,
+			code: res.statusCode
 		});
 	}
 
@@ -25,7 +26,8 @@ module.exports = function ($) {
 			PersonId: (req.currentPerson || {}).id || null,
 			method: req.method,
 			url: req.originalUrl,
-			duration: Date.now() - req.requestTimestamp
+			duration: Date.now() - req.requestTimestamp,
+			code: res.statusCode
 		});
 	}
 
