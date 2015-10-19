@@ -15,14 +15,12 @@ module.exports = function ( $express, $app, $methods, $config, $global ) {
 		var Views = require('./Views')($);
 		var Auth = require('./Auth')($);
 
-	// Pre-Middleware
-		authRouter.all('/*', Auth.getCurrentSession );
-
 	// Views
 		viewsRouter.get('/login', Views.login );
 
 	// Auth
-		authRouter.post('/login', /*Auth.preventIfAlreadyLoggedIn,*/ Auth.login );
+		authRouter.all('/*', Auth.getCurrentSession );
+		authRouter.post('/login', Auth.preventIfAlreadyLoggedIn, Auth.login );
 
 	// API
 		apiRouter.get('/asd', function(req, res) {

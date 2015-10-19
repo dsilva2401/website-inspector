@@ -53,6 +53,10 @@ module.exports = function ($) {
 		})
 		// Success
 		.then(function (session) {
+			if (!session) {
+				deferred.resolve(null);
+				return;
+			}
 			models.Person.findById(session.PersonId)
 			// Success
 			.then(function (person) {

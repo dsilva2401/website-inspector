@@ -9,7 +9,6 @@ module.exports = function ($) {
 		Auth.getCurrentSession(uid, skey)
 		// Success
 		.then(function (person) {
-			console.log( person )
 			req.currentPerson = person;
 			next();
 		})
@@ -20,13 +19,13 @@ module.exports = function ($) {
 	}
 
 	r.preventIfAlreadyLoggedIn = function (req, res, next) {
-		/*if (req.currentPerson) {
+		if (req.currentPerson) {
 			res.status(409);
 			Response.error(req, res, next)({
 				details: 'User already logged in'
 			});
 			return;
-		}*/
+		}
 		next();
 	}
 
