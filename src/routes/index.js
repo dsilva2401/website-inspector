@@ -12,15 +12,22 @@ module.exports = function ( $express, $app, $methods, $config, $global ) {
 		var apiRouter = $express.Router();
 
 	// Controllers
+		var Middleware = require('./Middleware')($);
 		var Views = require('./Views')($);
 		var Auth = require('./Auth')($);
+
+	// Middleware
+		authRouter.all('/*', Middleware.startRequest );
+		authRouter.all('/*', Auth.getCurrentSession );
+		apiRouter.all('/*', Middleware.startRequest );
+		apiRouter.all('/*', Auth.getCurrentSession );
 
 	// Views
 		viewsRouter.get('/login', Views.login );
 
 	// Auth
-		authRouter.all('/*', Auth.getCurrentSession );
 		authRouter.post('/login', Auth.preventIfAlreadyLoggedIn, Auth.login );
+		authRouter.post('/logout', Auth.preventIfNotLoggedIn, Auth.logout );
 
 	// API
 		apiRouter.get('/asd', function(req, res) {

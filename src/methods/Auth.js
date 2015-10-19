@@ -74,5 +74,34 @@ module.exports = function ($) {
 		return deferred.promise;
 	}
 
+	Auth.deleteSession = function (uid, skey, res) {
+		var deferred = $.q.defer();
+		models.SessionKey.findOne({
+			PersonId: uid,
+			key: skey
+		})
+		// Success
+		.then(function (session) {
+			if (!session) {
+				deferred.resolve(null);
+				return;
+			}
+			session.destroy()
+			// Success
+			.then(function (status) {
+				deferred.resolve(true);
+			})
+			// Error
+			.catch(function (error) {
+				deferred.reject(error);
+			})
+		})
+		// Error
+		.catch(function (error) {
+			deferred.reject(error);
+		});
+		return deferred.promise;
+	}
+
 	return Auth;
 }

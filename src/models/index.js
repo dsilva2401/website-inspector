@@ -32,6 +32,12 @@ module.exports = function ($config, $methods, $global) {
 			key: DataTypes.STRING
 		});
 
+		var SuccessResponseLog = db.define('SuccessResponseLog', {
+			method: DataTypes.STRING,
+			url: DataTypes.STRING,
+			duration: DataTypes.INTEGER
+		});
+
 	// Relations
 		Credential.belongsTo( Person );
 		SessionKey.belongsTo( Person );

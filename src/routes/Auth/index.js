@@ -71,5 +71,17 @@ module.exports = function ($) {
 		);
 	}
 
+	r.logout = function (req, res, next) {
+		Auth.deleteSession(req.cookies.uid, req.cookies.skey, res)
+		// Success
+		.then(
+			Response.success(req, res, next)
+		)
+		// Error
+		.catch(
+			Response.error(req, res, next)
+		);
+	}
+
 	return r;
 }
