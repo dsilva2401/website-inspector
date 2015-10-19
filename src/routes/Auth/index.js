@@ -1,6 +1,7 @@
 module.exports = function ($) {
 	var r = {};
 	var Auth = $.methods.Auth;
+	var Person = $.methods.Person;
 	var Response = $.methods.Response;
 
 	r.getCurrentSession = function (req, res, next) {
@@ -29,6 +30,26 @@ module.exports = function ($) {
 		next();
 	}
 
+	r.redirectIfNotLoggedIn = function (route) {
+		return function (req, res, next) {
+			if (!req.currentPerson) {
+				res.redirect(route);
+				return;
+			}
+			next();		
+		}
+	}
+
+	r.redirectIfAlreadyLoggedIn = function (route) {
+		return function (req, res, next) {
+			if (req.currentPerson) {
+				res.redirect(route);
+				return;
+			}
+			next();		
+		}
+	}
+
 	r.preventIfNotLoggedIn = function (req, res, next) {
 		if (!req.currentPerson) {
 			res.status(401);
@@ -38,6 +59,34 @@ module.exports = function ($) {
 			return;
 		}
 		next();
+	}
+
+	r.register = function (req, res, next) {
+		Person.createWithCredentials({
+			name: req.body.name,
+			lastname: req.body.lastname,
+			email: req.body.email,
+			sex: req.body.sex,
+			birthday: req.body.birthday,
+			username: req.body.username,
+			password: req.body.password
+		})
+		// Success
+		.then(function (person) {
+			Auth.createSession(person.id, res)
+			// Success
+			.then(
+				Response.success(req, res, next)
+			)
+			// Error
+			.catch(
+				Response.error(req, res, next)
+			)
+		})
+		// Error
+		.catch(
+			Response.error(req, res, next)
+		);
 	}
 
 	r.login = function (req, res, next) {

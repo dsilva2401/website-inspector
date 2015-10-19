@@ -1,0 +1,65 @@
+<html>
+	
+	<head>
+		<title>Register</title>
+		<link rel="stylesheet" href="/front/modules/register/style.css">
+	</head>
+
+	<body ng-app="app" ng-controller="appController">
+
+		<form ng-submit="methods.submit();">
+
+			<div class="title-container">
+				<h3>Register</h3>
+			</div>
+
+			<div class="input-container">
+				<p>Name</p>
+				<input type="text" placeholder="Name" ng-model="models.name" required>
+			</div>
+
+			<div class="input-container">
+				<p>Lastname</p>
+				<input type="text" placeholder="Lastname" ng-model="models.lastname" required>
+			</div>
+
+			<div class="input-container">
+				<p>Email</p>
+				<input type="email" placeholder="Email" ng-model="models.email" required>
+			</div>
+
+			<div class="input-container">
+				<p>Sex</p>
+				<select placeholder="Sex" ng-model="models.sex" required>
+					<option value="">-</option>
+					<option value="m">Male</option>
+					<option value="f">Female</option>
+				</select>
+			</div>
+
+			<div class="input-container">
+				<p>Birthday</p>
+				<input type="date" placeholder="Birthday" ng-model="models.birthday" required>
+			</div>
+
+			<div class="input-container">
+				<p>Password</p>
+				<input type="password" placeholder="Password" ng-model="models.password" required>
+			</div>
+
+			<div class="input-container">
+				<p>Password again</p>
+				<input type="password" placeholder="Password" ng-model="models.repassword" required>
+			</div>
+
+			<div class="input-container">
+				<input type="submit" value="Register">
+			</div>		
+
+		</form>
+
+		<script src="/front/libs/angular/angular.min.js"></script>
+		<script src="/front/modules/register/script.js"></script>
+	</body>
+
+</html>

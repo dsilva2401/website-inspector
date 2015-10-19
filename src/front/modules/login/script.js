@@ -18,7 +18,7 @@
 			})
 			// Error
 			.catch(function (error) {
-				console.warn('Error en login', error);
+				console.warn('Error on login', error);
 			})
 		}
 

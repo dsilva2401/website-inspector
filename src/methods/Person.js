@@ -7,6 +7,7 @@ module.exports = function ($) {
 		// Create Person instance	
 		models.Person.create({
 			name: userData.name,
+			lastname: userData.lastname,
 			email: userData.email,
 			sex: userData.sex,
 			birthday: userData.birthday

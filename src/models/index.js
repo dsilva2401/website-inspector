@@ -17,6 +17,7 @@ module.exports = function ($config, $methods, $global) {
 	// Models
 		var Person = db.define('Person', {
 			name: DataTypes.STRING,
+			lastname: DataTypes.STRING,
 			email: { type: DataTypes.STRING, unique: true },
 			sex: DataTypes.CHAR,
 			birthday: DataTypes.DATE
@@ -25,7 +26,8 @@ module.exports = function ($config, $methods, $global) {
 		var Credential = db.define('Credential', {
 			email: { type: DataTypes.STRING, unique: true },
 			username: { type: DataTypes.STRING, unique: true },
-			password: DataTypes.STRING
+			password: DataTypes.STRING,
+			active: DataTypes.BOOLEAN
 		});
 
 		var SessionKey = db.define('SessionKey', {
