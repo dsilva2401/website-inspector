@@ -3,6 +3,44 @@ module.exports = function ($) {
 	var Auth = $.methods.Auth;
 	var Response = $.methods.Response;
 
+	r.getCurrentSession = function (req, res, next) {
+		var uid = req.cookies.uid;
+		var skey = req.cookies.skey;
+		Auth.getCurrentSession(uid, skey)
+		// Success
+		.then(function (person) {
+			console.log( person )
+			req.currentPerson = person;
+			next();
+		})
+		// Error
+		.catch(
+			Response.error(req, res, next)
+		);
+	}
+
+	r.preventIfAlreadyLoggedIn = function (req, res, next) {
+		/*if (req.currentPerson) {
+			res.status(409);
+			Response.error(req, res, next)({
+				details: 'User already logged in'
+			});
+			return;
+		}*/
+		next();
+	}
+
+	r.preventIfNotLoggedIn = function (req, res, next) {
+		if (!req.currentPerson) {
+			res.status(401);
+			Response.error(req, res, next)({
+				details: 'User not logged in'
+			});
+			return;
+		}
+		next();
+	}
+
 	r.login = function (req, res, next) {
 		Auth.verifyCredentials({
 			username: req.body.username,

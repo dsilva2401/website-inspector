@@ -45,5 +45,30 @@ module.exports = function ($) {
 		return deferred.promise;
 	}
 
+	Auth.getCurrentSession = function (uid, skey) {
+		var deferred = $.q.defer();
+		models.SessionKey.findOne({
+			PersonId: uid,
+			key: skey
+		})
+		// Success
+		.then(function (session) {
+			models.Person.findById(session.PersonId)
+			// Success
+			.then(function (person) {
+				deferred.resolve(person);
+			})
+			// Error
+			.catch(function (error) {
+				deferred.reject(error);
+			})
+		})
+		// Error
+		.catch(function (error) {
+			deferred.reject(error);
+		});
+		return deferred.promise;
+	}
+
 	return Auth;
 }
