@@ -28,7 +28,7 @@ module.exports = function ( $express, $app, $methods, $config, $global ) {
 		viewsRouter.get('/login', Auth.redirectIfAlreadyLoggedIn('/'), Views.login );
 		viewsRouter.get('/register', Auth.redirectIfAlreadyLoggedIn('/'), Views.register );
 		// Platforms
-		viewsRouter.get('/*', Auth.redirectIfNotLoggedIn('/login') );
+		viewsRouter.get('/admin', Auth.redirectIfNotLoggedIn('/login') );
 		viewsRouter.get('/admin', Auth.verifyPlatformAccess, Views.admin );
 
 	// Auth
