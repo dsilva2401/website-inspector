@@ -13,5 +13,9 @@ module.exports = function ($) {
 		);
 	}
 
+	r.admin = function (req, res) {
+		res.end('Admin console');
+	}
+
 	return r;
 }

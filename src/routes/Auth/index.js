@@ -131,5 +131,9 @@ module.exports = function ($) {
 		);
 	}
 
+	r.verifyPlatformAccess = function (req, res, next) {
+		next();
+	}
+
 	return r;
 }

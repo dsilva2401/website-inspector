@@ -24,8 +24,12 @@ module.exports = function ( $express, $app, $methods, $config, $global ) {
 		apiRouter.all('/*', Auth.getCurrentSession );
 
 	// Views
+		// Access and register
 		viewsRouter.get('/login', Auth.redirectIfAlreadyLoggedIn('/'), Views.login );
 		viewsRouter.get('/register', Auth.redirectIfAlreadyLoggedIn('/'), Views.register );
+		// Platforms
+		viewsRouter.get('/*', Auth.redirectIfNotLoggedIn('/login') );
+		viewsRouter.get('/admin', Auth.verifyPlatformAccess, Views.admin );
 
 	// Auth
 		authRouter.post('/login', Auth.preventIfAlreadyLoggedIn, Auth.login );
@@ -35,7 +39,7 @@ module.exports = function ( $express, $app, $methods, $config, $global ) {
 	// API
 		apiRouter.get('/asd', function(req, res) {
 			res.end('123');
-		})
+		});
 
 	// Set routers
 		$app.use( viewsRouter );

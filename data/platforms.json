@@ -1,0 +1,23 @@
+[
+	{
+		"id": 1,
+		"name": "Admin console",
+		"path": "/admin",
+		"features": [
+			{
+				"description": "List staff",
+				"state": "staff.list",
+				"routes": [
+					"GET /api/v1/staff"
+				]
+			},
+			{
+				"description": "Register staff",
+				"state": "staff.register",
+				"routes": [
+					"POST /api/v1/staff"
+				]
+			}
+		]
+	}
+]

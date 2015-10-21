@@ -27,7 +27,12 @@ module.exports = function ($config, $methods, $global) {
 			email: { type: DataTypes.STRING, unique: true },
 			username: { type: DataTypes.STRING, unique: true },
 			password: DataTypes.STRING,
-			active: DataTypes.BOOLEAN
+			active: { type: DataTypes.BOOLEAN, defaultValue: true }
+		});
+
+		var PersonPlatformAccess = db.define('PersonPlatformAccess', {
+			PlatformId: DataTypes.INTEGER,
+			featuresAccess: DataTypes.STRING
 		});
 
 		var SessionKey = db.define('SessionKey', {
