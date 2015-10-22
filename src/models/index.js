@@ -30,14 +30,17 @@ module.exports = function ($config, $methods, $global) {
 			active: { type: DataTypes.BOOLEAN, defaultValue: true }
 		});
 
-		var PersonPlatformAccess = db.define('PersonPlatformAccess', {
-			PlatformId: DataTypes.INTEGER,
-			featuresAccess: DataTypes.STRING
-		});
-
 		var SessionKey = db.define('SessionKey', {
 			key: DataTypes.STRING
 		});
+
+		var PeopleGroup = db.define('PeopleGroup', {
+			name: DataTypes.STRING
+		});
+
+		/*var SystemRole = db.define('SystemRole', {
+			name: DataTypes.STRING
+		});*/
 
 		var SuccessResponseLog = db.define('SuccessResponseLog', {
 			PersonId: DataTypes.INTEGER,
@@ -65,6 +68,7 @@ module.exports = function ($config, $methods, $global) {
 	// Relations
 		Credential.belongsTo( Person );
 		SessionKey.belongsTo( Person );
+		PeopleGroup.belongsTo( Person, { as: 'CreatedBy' } )
 
 	// Sync database
 		db.sync();
