@@ -1,4 +1,5 @@
 module.exports = {
+	rootDir: __dirname,
 	env: 'dev',
 	httpServer: {
 		domain: 'http://localhost:3000',

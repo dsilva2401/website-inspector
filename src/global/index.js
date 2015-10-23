@@ -8,5 +8,6 @@ module.exports = function ($global, $config) {
 	$global.nodemailer = require('nodemailer');
 	$global.Sequelize = require('sequelize');
 	$global.path = require('path');
+	$global.fs = require('fs');
 
 }

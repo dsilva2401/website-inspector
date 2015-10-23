@@ -132,7 +132,24 @@ module.exports = function ($) {
 	}
 
 	r.verifyPlatformAccess = function (req, res, next) {
-		next();
+		Auth.getCurrentPlatformAndFeatures(req.currentPerson, req.url)
+		// Success
+		.then(function (platform) {
+			if (platform) {
+				next();
+				return;
+			}
+			res.status(401);
+			res.end('Not authorized to this platform');
+			// unauthorized-platform
+			res.sendFile(
+				$.global.path.join(__dirname,'../../front/modules/unauthorized-platform/index.html')
+			);
+		})
+		// Error
+		.catch(
+			Response.error(req, res, next)
+		);
 	}
 
 	return r;

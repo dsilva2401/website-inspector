@@ -103,8 +103,30 @@ module.exports = function ($) {
 		return deferred.promise;
 	}
 
-	Auth.verifyPlatformAccess = function (uid, platformPath) {
-		
+	Auth.getCurrentPlatformAndFeatures = function (person, platformUrl) {
+		var deferred = $.q.defer();
+		var platformsPath = $.global.path.join( $.config.rootDir, 'data', 'platforms.json' );
+		var platforms = JSON.parse( $.global.fs.readFileSync(platformsPath) );
+		var currentPlatform = platforms.filter(function (p) {
+			return platformUrl.indexOf( p.path )>=0;
+		})[0];
+		person.getPlatformRoles()
+		// Success
+		.then(function (platformRoles) {
+			var pRole = platformRoles.filter(function (r) { return r.dataValues.PlatformId==currentPlatform.id; })[0];
+			if (pRole.dataValues.featuresAccess != '*') {
+				pRole.dataValues.featuresAccess = JSON.parse(pRole.dataValues.featuresAccess);
+				currentPlatform.features = currentPlatform.features.filter(function (f) {
+					return pRole.dataValues.featuresAccess.indexOf( f.id )>=0;
+				});
+			}
+			deferred.resolve( currentPlatform );
+		})
+		// Error
+		.catch(function (error) {
+			deferred.reject(error);
+		});
+		return deferred.promise;
 	}
 
 	return Auth;
