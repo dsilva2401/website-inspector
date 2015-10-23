@@ -113,6 +113,10 @@ module.exports = function ($) {
 		person.getPlatformRoles()
 		// Success
 		.then(function (platformRoles) {
+			if (!platformRoles || !platformRoles.length) {
+				deferred.resolve( null );
+				return;
+			}
 			var pRole = platformRoles.filter(function (r) { return r.dataValues.PlatformId==currentPlatform.id; })[0];
 			if (pRole.dataValues.featuresAccess != '*') {
 				pRole.dataValues.featuresAccess = JSON.parse(pRole.dataValues.featuresAccess);

@@ -140,8 +140,6 @@ module.exports = function ($) {
 				return;
 			}
 			res.status(401);
-			res.end('Not authorized to this platform');
-			// unauthorized-platform
 			res.sendFile(
 				$.global.path.join(__dirname,'../../front/modules/unauthorized-platform/index.html')
 			);
