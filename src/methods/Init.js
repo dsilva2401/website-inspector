@@ -2,7 +2,7 @@ module.exports = function ($) {
 	var Init = {};
 	var models = $.database.main.models;
 	
-	Init.setupRootModels = function () {
+	Init.firstSetup = function () {
 		$.methods.Person.createRootUser()
 		// Success
 		.then(function (rootUser) {

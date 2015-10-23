@@ -2,7 +2,7 @@ module.exports = function ( $methods ) {
 	
 	setTimeout(function () {
 
-		$methods.Init.setupRootModels();
+		$methods.Init.firstSetup();
 
 	},4000);
 
