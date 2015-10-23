@@ -1,14 +1,14 @@
 module.exports = {
 	env: 'dev',
 	httpServer: {
-		domain: 'http://localhost:8080',
+		domain: 'http://localhost:3000',
 		host: '0.0.0.0',
-		port: 8080
+		port: 3000
 	},
 	httpsServer: {
-		domain: 'https://localhost:8081',
+		domain: 'https://localhost:5000',
 		host: '0.0.0.0',
-		port: 8081
+		port: 5000
 	},
 	publicDir: 'public',
 	frontDir: 'src/front',
