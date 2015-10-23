@@ -38,9 +38,11 @@ module.exports = function ($config, $methods, $global) {
 			name: DataTypes.STRING
 		});
 
-		/*var SystemRole = db.define('SystemRole', {
-			name: DataTypes.STRING
-		});*/
+		var PlatformRole = db.define('PlatformRole', {
+			name: DataTypes.STRING,
+			description: DataTypes.STRING,
+			PlatformId: DataTypes.INTEGER
+		});
 
 		var SuccessResponseLog = db.define('SuccessResponseLog', {
 			PersonId: DataTypes.INTEGER,
@@ -69,6 +71,7 @@ module.exports = function ($config, $methods, $global) {
 		Credential.belongsTo( Person );
 		SessionKey.belongsTo( Person );
 		PeopleGroup.belongsTo( Person, { as: 'CreatedBy' } )
+		PlatformRole.belongsTo( PeopleGroup );
 
 	// Sync database
 		db.sync();
