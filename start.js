@@ -8,7 +8,7 @@ nodemon({
 nodemon.on('start', function () {
 	console.log('Starting server..');
 }).on('quit', function () {
-	console.log('App has quit');
+	console.log('Server has quit');
 }).on('restart', function (files) {
-	console.log('App restarted due to: ', files);
+	console.log('Server restarted due to: ', files);
 });

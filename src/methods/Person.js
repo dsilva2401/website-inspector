@@ -50,14 +50,17 @@ module.exports = function ($) {
 	}
 
 	Person.createRootUser = function () {
+		var deferred = $.q.defer();
 		// Find if root user already exists
 		models.Credential.findOne({
-			where: { username: 'admin' }
+			where: { username: $.config.rootUser.username }
 		})
 		// Success
 		.then(function (credential) {
 			if (credential) {
-				console.log('Root user already created');
+				deferred.reject({
+					details: 'Root user already created'
+				});
 				return;
 			}
 			// Create person and credentials
@@ -71,17 +74,18 @@ module.exports = function ($) {
 			})
 			// Success
 			.then(function (rootUser) {
-				console.log('Root user created!');
+				deferred.resolve(rootUser);
 			})
 			// Error
 			.catch(function (error) {
-				console.warn('Error creating root user ', error);
+				deferred.reject(error);
 			});
 		})
 		// Error
 		.catch(function (error) {
-			console.warn('Error finding root user', error);
-		})
+			deferred.reject(error);
+		});
+		return deferred.promise;
 	}
 
 	return Person;

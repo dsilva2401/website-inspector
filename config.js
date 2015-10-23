@@ -20,6 +20,15 @@ module.exports = {
 		sex: 'm',
 		birthday: new Date(1993, 0, 24)
 	},
+	rootPeopleGroup: {
+		name: 'Staff'
+	},
+	rootPlatformRole: {
+		name: 'App admin',
+		description: 'App root admin',
+		PlatformId: 1,
+		featuresAccess: '*'
+	},
 	databases: {
 		main: {
 			dev: {

@@ -14,5 +14,8 @@ module.exports = function ($methods, $database, $q, $config, $global) {
 		$methods.Response = require('./Response')($);
 		$methods.Person = require('./Person')($);
 		$methods.Auth = require('./Auth')($);
+		$methods.PeopleGroup = require('./PeopleGroup')($);
+		$methods.PlatformRole = require('./PlatformRole')($);
+		$methods.Init = require('./Init')($);
 
 }

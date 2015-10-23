@@ -1,10 +1,9 @@
-module.exports = function ( $methods, $config ) {
+module.exports = function ( $methods ) {
 	
 	setTimeout(function () {
 
-		// Create root user
-		$methods.Person.createRootUser();
-		
-	},2000);
+		$methods.Init.setupRootModels();
+
+	},4000);
 
 }
