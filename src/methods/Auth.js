@@ -103,5 +103,9 @@ module.exports = function ($) {
 		return deferred.promise;
 	}
 
+	Auth.verifyPlatformAccess = function (uid, platformPath) {
+		
+	}
+
 	return Auth;
 }
