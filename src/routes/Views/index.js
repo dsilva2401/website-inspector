@@ -13,6 +13,12 @@ module.exports = function ($) {
 		);
 	}
 
+	r.platforms = function (req, res) {
+		res.sendFile(
+			$.global.path.join(__dirname,'../../front/modules/platforms/index.html')
+		);
+	}
+
 	r.admin = function (req, res) {
 		res.end('Admin console');
 	}

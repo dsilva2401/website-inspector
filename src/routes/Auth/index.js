@@ -33,7 +33,7 @@ module.exports = function ($) {
 	r.redirectIfNotLoggedIn = function (route) {
 		return function (req, res, next) {
 			if (!req.currentPerson) {
-				res.redirect(route);
+				res.redirect(route+'?r='+req.originalUrl);
 				return;
 			}
 			next();		

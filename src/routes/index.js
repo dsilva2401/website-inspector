@@ -15,6 +15,7 @@ module.exports = function ( $express, $app, $methods, $config, $global ) {
 		var Middleware = require('./Middleware')($);
 		var Views = require('./Views')($);
 		var Auth = require('./Auth')($);
+		var API = require('./API')($);
 
 	// Middleware
 		viewsRouter.all('/*', Auth.getCurrentSession );
@@ -30,6 +31,8 @@ module.exports = function ( $express, $app, $methods, $config, $global ) {
 		// Platforms
 		viewsRouter.get('/admin', Auth.redirectIfNotLoggedIn('/login') );
 		viewsRouter.get('/admin', Auth.verifyPlatformAccess, Views.admin );
+		viewsRouter.get('/platforms', Auth.redirectIfNotLoggedIn('/login') );
+		viewsRouter.get('/platforms', Views.platforms );
 
 	// Auth
 		authRouter.post('/login', Auth.preventIfAlreadyLoggedIn, Auth.login );
@@ -37,9 +40,8 @@ module.exports = function ( $express, $app, $methods, $config, $global ) {
 		authRouter.delete('/logout', Auth.preventIfNotLoggedIn, Auth.logout );
 
 	// API
-		apiRouter.get('/asd', function(req, res) {
-			res.end('123');
-		});
+		apiRouter.all('/*', Auth.preventIfNotLoggedIn );
+		apiRouter.get('/me', API.Me.info );
 
 	// Set routers
 		$app.use( viewsRouter );

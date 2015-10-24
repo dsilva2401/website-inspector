@@ -17,5 +17,6 @@ module.exports = function ($methods, $database, $q, $config, $global) {
 		$methods.PeopleGroup = require('./PeopleGroup')($);
 		$methods.PlatformRole = require('./PlatformRole')($);
 		$methods.Init = require('./Init')($);
+		$methods.GenericModelManager = require('./GenericModelManager')($);
 
 }

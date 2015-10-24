@@ -103,6 +103,28 @@ module.exports = function ($) {
 		return deferred.promise;
 	}
 
+	Auth.getAvailablePlatforms = function (person) {
+		var deferred = $.q.defer();
+		var platformsPath = $.global.path.join( $.config.rootDir, 'data', 'platforms.json' );
+		var platforms = JSON.parse( $.global.fs.readFileSync(platformsPath) );
+		person.getPlatformRoles()
+		// Success
+		.then(function (platformRoles) {
+			if (!platformRoles || !platformRoles.length) {
+				deferred.resolve( [] );
+				return;
+			}
+			deferred.resolve(platforms.filter(function (platform) {
+				return platformRoles.filter(function (pr) { return pr.dataValues.PlatformId==platform.id; }).length
+			}));
+		})
+		// Error
+		.catch(function (error) {
+			deferred.reject(error);
+		});
+		return deferred.promise;
+	}
+
 	Auth.getCurrentPlatformAndFeatures = function (person, platformUrl) {
 		var deferred = $.q.defer();
 		var platformsPath = $.global.path.join( $.config.rootDir, 'data', 'platforms.json' );
