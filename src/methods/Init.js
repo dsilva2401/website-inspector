@@ -50,5 +50,63 @@ module.exports = function ($) {
 		})
 	}
 
+	Init.verifyIfNewPlatforms = function () {
+		var platformsPath = $.global.path.join( $.config.rootDir, 'data', 'platforms.json' );
+		var platforms = JSON.parse( $.global.fs.readFileSync(platformsPath) );
+		models.Person.findOne({
+			email: $.config.rootUser.email
+		})
+		// Success
+		.then(function (rootUser) {
+			rootUser.getPlatformRoles()
+			// Success
+			.then(function (platformRoles) {
+				if (!platformRoles || !platformRoles.length) {
+					console.log('No platforms..');
+					return;
+				}
+				platforms.forEach(function (platform) {
+					if ( !platformRoles.filter(function (pr) { return pr.dataValues.PlatformId==platform.id; }).length ) {
+						console.log(platform);
+						console.log('Creating role for platform: ', platform.name);
+						models.PlatformRole.create({
+							name: $.config.rootPlatformRole.name,
+							description: $.config.rootPlatformRole.description,
+							PlatformId: platform.id,
+							featuresAccess: $.config.rootPlatformRole.featuresAccess
+						})
+						// Success
+						.then(function (platformRole) {
+							models.PersonPlatformRole.create({
+								PersonId: rootUser.id,
+								PlatformRoleId: platformRole.id
+							})
+							// Success
+							.then(function (personPlatformRole) {
+								console.log('All root models created');
+							})
+							// Error
+							.catch(function (error) {
+								console.log('Error creating root models', error);
+							});
+						})
+						// Error
+						.catch(function (error) {
+							console.warn(error);
+						});
+					}
+				});
+			})
+			// Error
+			.catch(function (error) {
+				console.warn(error);
+			})
+		})
+		// Error
+		.catch(function (error) {
+			console.warn(error);
+		})
+	}
+
 	return Init;
 }

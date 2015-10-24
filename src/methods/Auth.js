@@ -118,6 +118,10 @@ module.exports = function ($) {
 				return;
 			}
 			var pRole = platformRoles.filter(function (r) { return r.dataValues.PlatformId==currentPlatform.id; })[0];
+			if (!pRole) {
+				deferred.resolve( null );
+				return;
+			}
 			if (pRole.dataValues.featuresAccess != '*') {
 				pRole.dataValues.featuresAccess = JSON.parse(pRole.dataValues.featuresAccess);
 				currentPlatform.features = currentPlatform.features.filter(function (f) {
