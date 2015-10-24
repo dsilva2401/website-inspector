@@ -7,9 +7,7 @@
 		$scope.models = $scope.models || {};
 
 		// Methods
-		$scope.exec = function () {
-			eval($scope.q)
-		}
+		
 		
 		// Init
 
