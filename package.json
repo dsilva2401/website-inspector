@@ -1,20 +1,17 @@
 {
-  "name": "Guppy",
+  "name": "VirtualReality",
   "version": "0.0.1",
-  "description": "Guppy framework",
+  "description": "Virtual Reality Game",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/dsilva2401/Guppy.git"
+    "url": "https://dsilva2401x@bitbucket.org/dsilva2401x/virtualreality.git"
   },
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/dsilva2401/Guppy/issues"
-  },
-  "homepage": "https://github.com/dsilva2401/Guppy",
+  "homepage": "https://dsilva2401x@bitbucket.org/dsilva2401x/virtualreality.git",
   "dependencies": {
     "body-parser": "^1.13.2",
     "compression": "^1.5.1",

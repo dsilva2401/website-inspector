@@ -1,26 +1,10 @@
 module.exports = function ($) {
 	var r = {};
 
-	r.login = function (req, res) {
+	r.game = function (req, res) {
 		res.sendFile(
-			$.global.path.join(__dirname,'../../front/modules/login/index.html')
+			$.global.path.join(__dirname,'../../front/modules/game/index.html')
 		);
-	}
-
-	r.register = function (req, res) {
-		res.sendFile(
-			$.global.path.join(__dirname,'../../front/modules/register/index.html')
-		);
-	}
-
-	r.platforms = function (req, res) {
-		res.sendFile(
-			$.global.path.join(__dirname,'../../front/modules/platforms/index.html')
-		);
-	}
-
-	r.admin = function (req, res) {
-		res.end('Admin console');
 	}
 
 	return r;

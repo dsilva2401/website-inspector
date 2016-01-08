@@ -17,27 +17,8 @@ module.exports = function ( $express, $app, $methods, $config, $global ) {
 		var Auth = require('./Auth')($);
 		var API = require('./API')($);
 
-	// Middleware
-		viewsRouter.all('/*', Auth.getCurrentSession );
-		authRouter.all('/*', Middleware.startRequest );
-		authRouter.all('/*', Auth.getCurrentSession );
-		apiRouter.all('/*', Middleware.startRequest );
-		apiRouter.all('/*', Auth.getCurrentSession );
-
 	// Views
-		// Access and register
-		viewsRouter.get('/login', Auth.redirectIfAlreadyLoggedIn('/'), Views.login );
-		viewsRouter.get('/register', Auth.redirectIfAlreadyLoggedIn('/'), Views.register );
-		// Platforms
-		viewsRouter.get('/admin', Auth.redirectIfNotLoggedIn('/login') );
-		viewsRouter.get('/admin', Auth.verifyPlatformAccess, Views.admin );
-		viewsRouter.get('/platforms', Auth.redirectIfNotLoggedIn('/login') );
-		viewsRouter.get('/platforms', Views.platforms );
-
-	// Auth
-		authRouter.post('/login', Auth.preventIfAlreadyLoggedIn, Auth.login );
-		authRouter.post('/register', Auth.preventIfAlreadyLoggedIn, Auth.register );
-		authRouter.delete('/logout', Auth.preventIfNotLoggedIn, Auth.logout );
+		viewsRouter.get('/game', Views.game );
 
 	// API
 		apiRouter.all('/*', Auth.preventIfNotLoggedIn );
