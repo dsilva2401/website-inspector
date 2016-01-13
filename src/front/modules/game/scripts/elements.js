@@ -20,7 +20,69 @@ elements.sky = function () {
 			})
 		})
 	);
-}*/
+}
+
+*/
+elements.goodMeteor = function () {
+	return new THREE.Mesh(
+		new THREE.SphereGeometry( 7, 30, 30 ),
+		new THREE.MeshBasicMaterial ({
+			color: 0xFFD700
+		})
+	);
+}
+
+elements.badMeteor = function () {
+	return new THREE.Mesh(
+		new THREE.SphereGeometry( Math.floor((Math.random()*7 )+4), 30, 30 ),
+		new THREE.MeshBasicMaterial ({
+			color: 0xFF0000
+		})
+	);
+
+}
+
+
+/*
+for (var i = 0; i < 5; i++) {
+	var meteorito = elements.goodMeteor();
+	scene.addObject( meteorito )
+	meteorito.position.x= Math.floor((Math.random()*-200 )+400); 
+	meteorito.position.y= Math.floor((Math.random()*200 ));
+	meteorito.position.z= Math.floor((Math.random()*-200 )+400);
+	
+}
+
+
+for (var i = 0; i < 10; i++) {
+	var meteorito = elements.badMeteor();
+	scene.addObject( meteorito )
+	meteorito.position.x= Math.floor((Math.random()*-200 )+400); 
+	meteorito.position.y= Math.floor((Math.random()*200 ));
+	meteorito.position.z= Math.floor((Math.random()*-200 )+400);
+	
+}
+*/
+
+elements.meteors = function( scene ) {
+	for (var i = 0; i < 5; i++) {
+		var meteorito = elements.goodMeteor();
+		scene.addObject( meteorito )
+		meteorito.position.x= Math.floor((Math.random()*-200 )+400); 
+		meteorito.position.y= Math.floor((Math.random()*200 ));
+		meteorito.position.z= Math.floor((Math.random()*-200 )+400);
+	}
+
+
+	for (var i = 0; i < 10; i++) {
+		var meteorito = elements.badMeteor();
+		scene.addObject( meteorito )
+		meteorito.position.x= Math.floor((Math.random()*-200 )+400); 
+		meteorito.position.y= Math.floor((Math.random()*200 ));
+		meteorito.position.z= Math.floor((Math.random()*-200 )+400);
+	}	
+}
+
 
 elements.skateAlone = function () {
 	return new THREE.Mesh(
@@ -45,9 +107,9 @@ elements.skate = function (scene) {
 			(positions.rightFoot[0]-positions.leftFoot[0])
 		);
 	}
-
-	return self;
+	return self;							
 }
+
 
 elements.skeleton = function (scene) {
 	var self = {};
@@ -58,19 +120,18 @@ elements.skeleton = function (scene) {
 		'leftFoot', 'rightFoot'
 	];
 	// Initializing parts
-	self.parts = {};
 	parts.forEach(function (part) {
 		self.parts[part] = new THREE.Mesh(
 			new THREE.SphereGeometry( 2.5, 30, 30 ),
 			new THREE.MeshBasicMaterial({
-				color: 0xFF0000
+				color: 0xAAAAAA
 			})
 		);
 		scene.addObject(self.parts[part]);
 	})
 	// Draw parts function
 	self.move = function (positions) {
-		Object.keys(positions).forEach(function (position) {
+		Object.keys(positions).forEach( function(position) {
 			if (!self.parts[position]) return;
 			self.parts[position].position.x = positions[position][0];
 			self.parts[position].position.y = positions[position][1];
