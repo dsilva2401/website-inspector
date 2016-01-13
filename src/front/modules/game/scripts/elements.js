@@ -42,48 +42,6 @@ elements.badMeteor = function () {
 
 }
 
-
-/*
-for (var i = 0; i < 5; i++) {
-	var meteorito = elements.goodMeteor();
-	scene.addObject( meteorito )
-	meteorito.position.x= Math.floor((Math.random()*-200 )+400); 
-	meteorito.position.y= Math.floor((Math.random()*200 ));
-	meteorito.position.z= Math.floor((Math.random()*-200 )+400);
-	
-}
-
-
-for (var i = 0; i < 10; i++) {
-	var meteorito = elements.badMeteor();
-	scene.addObject( meteorito )
-	meteorito.position.x= Math.floor((Math.random()*-200 )+400); 
-	meteorito.position.y= Math.floor((Math.random()*200 ));
-	meteorito.position.z= Math.floor((Math.random()*-200 )+400);
-	
-}
-*/
-
-elements.meteors = function( scene ) {
-	for (var i = 0; i < 5; i++) {
-		var meteorito = elements.goodMeteor();
-		scene.addObject( meteorito )
-		meteorito.position.x= Math.floor((Math.random()*-200 )+400); 
-		meteorito.position.y= Math.floor((Math.random()*200 ));
-		meteorito.position.z= Math.floor((Math.random()*-200 )+400);
-	}
-
-
-	for (var i = 0; i < 10; i++) {
-		var meteorito = elements.badMeteor();
-		scene.addObject( meteorito )
-		meteorito.position.x= Math.floor((Math.random()*-200 )+400); 
-		meteorito.position.y= Math.floor((Math.random()*200 ));
-		meteorito.position.z= Math.floor((Math.random()*-200 )+400);
-	}	
-}
-
-
 elements.skateAlone = function () {
 	return new THREE.Mesh(
 		new THREE.CubeGeometry( 30, 2, 8 ),
