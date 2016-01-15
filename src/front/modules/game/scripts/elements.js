@@ -4,51 +4,53 @@ elements.sky = function () {
 	return new THREE.Mesh(
 		new THREE.SphereGeometry(1000, 60, 40),
 		new THREE.MeshBasicMaterial({
-			map: THREE.ImageUtils.loadTexture('resources/space.jpg', null, function () {
-				scene.renderCamera();
-			})
+			map: THREE.ImageUtils.loadTexture('/front/modules/game/resources/space.jpg')
 		})
 	);
 }
 
-/*elements.ground = function () {
+elements.goodMetheorite = function () {
 	return new THREE.Mesh(
-		new THREE.CubeGeometry( GROUND_WIDTH, 6, GROUND_HEIGHT ),
-		new THREE.MeshBasicMaterial({
-			map: THREE.ImageUtils.loadTexture('resources/ground.jpg', null, function () {
-				scene.renderCamera();
-			})
-		})
-	);
-}
-
-*/
-elements.goodMeteor = function () {
-	return new THREE.Mesh(
-		new THREE.SphereGeometry( 7, 30, 30 ),
+		new THREE.SphereGeometry( 5, 30, 30 ),
 		new THREE.MeshBasicMaterial ({
-			color: 0xFFD700
+			// color: 0xFFD700
+			map: THREE.ImageUtils.loadTexture('/front/modules/game/resources/good.png')
 		})
 	);
 }
 
-elements.badMeteor = function () {
+elements.badMetheorite = function () {
 	return new THREE.Mesh(
-		new THREE.SphereGeometry( Math.floor((Math.random()*7 )+4), 30, 30 ),
+		new THREE.SphereGeometry( 8, 30, 30 ),
 		new THREE.MeshBasicMaterial ({
-			color: 0xFF0000
+			// color: 0xFF1534
+			map: THREE.ImageUtils.loadTexture('/front/modules/game/resources/bad.png')
 		})
 	);
-
 }
 
 elements.skateAlone = function () {
-	return new THREE.Mesh(
+	var sk = new THREE.Mesh(
 		new THREE.CubeGeometry( 30, 2, 8 ),
 		new THREE.MeshBasicMaterial({
-			color: 0xEEEEEE
+			// color: 0xEEEEEE
+			map: THREE.ImageUtils.loadTexture('/front/modules/game/resources/platform.jpg')
 		})
 	);
+	var geometry = new THREE.CylinderGeometry( 2, 2, 10, 32 );
+	var material = new THREE.MeshBasicMaterial({
+		// color: 0xffff00
+		map: THREE.ImageUtils.loadTexture('/front/modules/game/resources/platform.jpg')
+	});
+	var cylinder1 = new THREE.Mesh( geometry, material );
+	var cylinder2 = new THREE.Mesh( geometry, material );
+	sk.add( cylinder1 );
+	sk.add( cylinder2 );
+	cylinder1.rotation.x = Math.PI/2;
+	cylinder1.position.x = -15;
+	cylinder2.rotation.x = Math.PI/2;
+	cylinder2.position.x = 15;
+	return sk;
 }
 
 elements.skate = function (scene) {
@@ -77,6 +79,7 @@ elements.skeleton = function (scene) {
 		'torso', 'leftHip','rightHip', 'leftKnee', 'rightKnee',
 		'leftFoot', 'rightFoot'
 	];
+	self.parts = {};
 	// Initializing parts
 	parts.forEach(function (part) {
 		self.parts[part] = new THREE.Mesh(

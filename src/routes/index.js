@@ -21,8 +21,12 @@ module.exports = function ( $express, $app, $methods, $config, $global ) {
 		viewsRouter.get('/game', Views.game );
 
 	// API
-		apiRouter.all('/*', Auth.preventIfNotLoggedIn );
-		apiRouter.get('/me', API.Me.info );
+		apiRouter.post('/game/start', API.Game.start);
+		apiRouter.post('/game/stop', API.Game.stop);
+		apiRouter.put('/game/speed', API.Game.setSpeed);
+		apiRouter.put('/game/capacity', API.Game.setCapacity);
+		apiRouter.get('/game/status', API.Game.getMetheoritesStatus);
+		apiRouter.delete('/game/reset', API.Game.reset);
 
 	// Set routers
 		$app.use( viewsRouter );

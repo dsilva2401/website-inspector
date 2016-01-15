@@ -35,9 +35,11 @@ var DScene = function (renderer) {
 		}
 		self.addObject = function (mesh) {
 			var objectId = self.objects.length;
-			self.objects.push( mesh );
 			self.scene.add( mesh );
 			return objectId;
+		}
+		self.removeObject = function (mesh) {
+			self.scene.remove( mesh );
 		}
 		self.enableControls = function () {
 			if (!self.cameras.length) {

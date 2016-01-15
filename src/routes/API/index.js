@@ -1,8 +1,7 @@
 module.exports = function ($) {
 	var c = {};
 
-	c.GenericController = require('./GenericController')($);
-	c.Me = require('./Me')($);
+	c.Game = require('./Game')($);
 
 	return c;
 }

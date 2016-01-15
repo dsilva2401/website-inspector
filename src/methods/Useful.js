@@ -1,6 +1,5 @@
 module.exports = function ($) {
 	var Useful = {};
-	var models = $.database.main.models;
 	
 	Useful.createRandomWord = function (size) {
 		var f = '';

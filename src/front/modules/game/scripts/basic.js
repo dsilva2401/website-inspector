@@ -13,6 +13,7 @@
 	var container = document.getElementById('container');
 	var containerLeft = document.getElementById('left');
 	var containerRight = document.getElementById('right');
+	var panoViewContainer = document.getElementById('pano-view');
 
 	WIDTH = container.offsetWidth-3;
 	if (isFirstPerson) WIDTH /= 2;
@@ -33,6 +34,7 @@
 		renderer2.setSize(WIDTH, HEIGHT);
 		containerLeft.appendChild(renderer1.domElement);
 		containerRight.appendChild(renderer2.domElement);
+		document.body.removeChild(panoViewContainer);
 	}
 	else {
 		var renderer = new THREE.WebGLRenderer();
@@ -42,7 +44,7 @@
 
 
 // WebSocket
-	var ws = new WebSocket('ws://192.168.43.71:8080/p5websocket');
+	var ws = new WebSocket('ws://192.168.0.107:8080/p5websocket');
 	var wsFunctions = [];
 	var keepWatchingFoot = true;
 	var floorPosition = 0;
@@ -96,14 +98,48 @@
 	}
 
 
+// Game
+	var gameFns = [];
+	if (!isFirstPerson) {
+		var isRunning = null;
+		var startPause = document.getElementById('start-stop-btn');
+		var resetPause = document.getElementById('reset-btn');
+		var speedInput = document.getElementById('speed-input');
+		startPause.onclick = function () {
+			var url = (!isRunning) ? '/api/v1/game/start' : '/api/v1/game/stop';
+			$.post( url , function (data) {
+				isRunning = !isRunning;
+				console.log(url + ' => ', data);
+			});
+		}
+		resetPause.onclick = function () {
+			$.ajax({
+				url: '/api/v1/game/reset',
+				type: 'DELETE',
+				success: function (data) {
+					console.log('/api/v1/game/reset => ', data);
+					isRunning = null;
+				}
+			});
+		}
+	}
+	setInterval(function () {
+		$.get('/api/v1/game/status', function (data) {
+			gameFns.forEach(function (fn) {
+				fn(data);
+			});
+		});
+	}, 500);
+
+
 // Main Scene
 	if (isFirstPerson) {
 		var mainScene1 = new DScene(renderer1);
 		var mainScene2 = new DScene(renderer2);
-		var s1 = new setMainScene( mainScene1, wsFunctions, doFunctions, isFirstPerson );
-		var s2 = new setMainScene( mainScene2, wsFunctions, doFunctions, isFirstPerson );
+		var s1 = new setMainScene( mainScene1, wsFunctions, doFunctions, isFirstPerson, gameFns );
+		var s2 = new setMainScene( mainScene2, wsFunctions, doFunctions, isFirstPerson, gameFns );
 	}
 	else {
 		var mainScene = new DScene(renderer);
-		setMainScene( mainScene, wsFunctions, doFunctions, isFirstPerson );
+		setMainScene( mainScene, wsFunctions, doFunctions, isFirstPerson, gameFns );
 	}
