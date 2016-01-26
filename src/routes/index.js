@@ -18,15 +18,10 @@ module.exports = function ( $express, $app, $methods, $config, $global ) {
 		var API = require('./API')($);
 
 	// Views
-		viewsRouter.get('/game', Views.game );
+		// viewsRouter.get('/game', Views.game );
 
 	// API
-		apiRouter.post('/game/start', API.Game.start);
-		apiRouter.post('/game/stop', API.Game.stop);
-		apiRouter.put('/game/speed', API.Game.setSpeed);
-		apiRouter.put('/game/capacity', API.Game.setCapacity);
-		apiRouter.get('/game/status', API.Game.getMetheoritesStatus);
-		apiRouter.delete('/game/reset', API.Game.reset);
+		// apiRouter.post('/game/start', API.Game.start);
 
 	// Set routers
 		$app.use( viewsRouter );

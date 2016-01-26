@@ -11,5 +11,4 @@ module.exports = function ($methods, $database, $q, $config, $global) {
 	// Methods
 		$methods.Useful = require('./Useful')($);
 		$methods.Response = require('./Response')($);
-		$methods.Game = require('./Game')($);
 }

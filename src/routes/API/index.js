@@ -1,7 +1,7 @@
 module.exports = function ($) {
 	var c = {};
 
-	c.Game = require('./Game')($);
+	// c.Game = require('./Game')($);
 
 	return c;
 }
