@@ -1,0 +1,93 @@
+/* Classes */
+	.cover {
+		position: absolute;
+		left: 0px;
+		top: 0px;
+		width: 100%;
+		height: 100%;
+	}
+
+/* App */
+	.header-container {
+		position: absolute;
+		left: 0px;
+		top: 0px;
+		width: 100%;
+		height: 80px;
+		background: #000;
+		color: #eee;
+		font-family: Arial;
+		font-size: 20px;
+		border: none;
+	}
+
+	.left-panel {
+		position: absolute;
+		left: 0px;
+		top: 80px;
+		width: 250px;
+		height: calc( 100% - 80px );
+		background: #333;
+		overflow: auto;
+	}
+
+	.left-panel .items-group button {
+		border: none;
+		background: none;
+		color: #ccc;
+		font-family: Arial;
+		font-size: 15px;
+		width: 100%;
+		padding: 10px 0px;
+		cursor: pointer;
+		opacity: 0.8;
+	}
+	.left-panel .items-group button:focus {
+		outline: none;
+	}
+	.left-panel .items-group button:hover {
+		opacity: 0.9;
+	}
+	.left-panel .items-group button:active {
+		opacity: 1;
+	}
+
+	.left-panel .items-group .title{
+		opacity: 1;
+		background: #222;
+		font-size: 18px;
+		color: #ddd;
+		cursor: default;
+	}
+	.left-panel .items-group .title:hover {
+		opacity: 1;
+	}
+	.left-panel .items-group .title:active {
+		opacity: 1;
+	}
+
+	.left-panel .logout {
+		border: none;
+		font-family: Arial;
+		width: 100%;
+		padding: 10px 0px;
+		opacity: 1;
+		background: #111;
+		font-size: 16px;
+		color: #ddd;
+		cursor: pointer;
+		position: absolute;
+		bottom: 0px;
+	}
+	.left-panel .logout:focus {
+		outline: none;
+	}
+
+	.submodule-container {
+		position: absolute;
+		left: 250px;
+		top: 80px;
+		width: calc( 100% - 250px );
+		height: calc( 100% - 80px );
+		background: #eee;
+	}

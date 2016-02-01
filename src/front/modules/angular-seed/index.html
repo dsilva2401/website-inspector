@@ -2,13 +2,22 @@
 	
 	<head>
 		<title>*</title>
-		<link rel="stylesheet" href="/front/modules/angular-seed/style.css">
+		<link rel="stylesheet" href="/front/modules/angular-seed/app/app.css">
 	</head>
 
-	<body ng-app="app" ng-controller="appController">
+	<body ng-app="app">
 
+		<app-container class="cover"></app-container>
+
+		<!-- libs -->
 		<script src="/front/libs/angular/angular.min.js"></script>
-		<script src="/front/modules/angular-seed/script.js"></script>
+		<script src="/front/libs/angular-ui-router/release/angular-ui-router.min.js"></script>
+		<script src="/front/libs/resources/src/resources.js"></script>
+		<!-- Scripts -->
+		<script src="/front/modules/angular-seed/app/app.js"></script>
+		<script src="/front/modules/angular-seed/app/app.config.js"></script>
+		<script src="/front/modules/angular-seed/app/app.controller.js"></script>
+		<script src="/front/modules/angular-seed/app/app.directive.js"></script>
 	</body>
 
 </html>

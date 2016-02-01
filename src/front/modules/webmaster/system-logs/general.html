@@ -1,0 +1,33 @@
+<div class="cover" style="overflow:auto">
+
+	<div class="graph-container full">
+		<button>Response time average</button>
+		<canvas
+			class="chart chart-line"
+			chart-data="models.responseTime.data"
+			chart-labels="models.responseTime.markers"
+			chart-series="models.responseTime.labels"
+		></canvas>
+	</div>
+
+	<div class="graph-container half">
+		<button>Server errors</button>
+		<canvas
+			class="chart chart-line"
+			chart-data="models.responseTime.data"
+			chart-labels="models.responseTime.markers"
+			chart-series="models.responseTime.labels"
+		></canvas>
+	</div>
+
+	<div class="graph-container half">
+		<button>Client errors</button>
+		<canvas
+			class="chart chart-line"
+			chart-data="models.responseTime.data"
+			chart-labels="models.responseTime.markers"
+			chart-series="models.responseTime.labels"
+		></canvas>
+	</div>
+
+</div>

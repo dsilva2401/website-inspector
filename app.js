@@ -17,16 +17,16 @@
 	app.run( require('./src/global') );
 
 
-// Setup methods
-	app.run( require('./src/methods') );
-
-
 // App settings
 	app.init( require('./src/settings') );
 
 
 // Setup models
-	app.addDatabase('main', require('./src/models'));
+	app.run( require('./src/models') );
+
+
+// Setup methods
+	app.run( require('./src/methods') );
 
 
 // Setup routes

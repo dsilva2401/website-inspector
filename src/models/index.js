@@ -1,26 +1,7 @@
-module.exports = function ($config, $methods, $global) {
+module.exports = function ($config, $methods, $global, $database) {
 
-	// Database configuration
-		var dbConfig = $config.databases['main'][$config.env];
+	// Databases
+		require('./sequelize')($config, $methods, $global, $database);
+		// require('./mongo')($config, $methods, $global, $database);
 
-	// Sequelize types
-		var DataTypes = $global.Sequelize;
-
-	// Create database
-		var db = new $global.Sequelize(
-			dbConfig.database,
-			dbConfig.username,
-			dbConfig.password,
-			dbConfig.options
-		);
-
-	// Models
-		
-	// Relations
-		
-
-	// Sync database
-		db.sync();
-
-	return db;
 }

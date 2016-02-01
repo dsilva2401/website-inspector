@@ -1,0 +1,9 @@
+<form ng-submit="methods.submit()">
+
+	<input type="text" placeholder="Username" ng-model="models.username" required>
+	<input type="password" placeholder="Password"  ng-model="models.password" required>
+	<p class="warn-message" ng-if="models.invalidCredentials">Invalid Credentials</p>
+	<p class="warn-message" ng-if="models.serverError">Server Error</p>
+	<button>Login</button>
+
+</form>

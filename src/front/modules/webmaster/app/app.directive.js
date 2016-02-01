@@ -5,7 +5,7 @@
 	app.directive('appContainer', function () {
 		return {
 			restrict: 'EA',
-			templateUrl: '/front/modules/webapp/app/app.html',
+			templateUrl: '/front/modules/webmaster/app/app.html',
 			controller: 'appController'
 		}
 	});

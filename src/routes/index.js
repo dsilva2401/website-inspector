@@ -1,10 +1,11 @@
-module.exports = function ( $express, $app, $methods, $config, $global ) {
+module.exports = function ( $express, $app, $methods, $config, $global, $database ) {
 
 	// Controllers dependencies
 		var $ = {};
 		$.methods = $methods;
 		$.config = $config;
 		$.global = $global;
+		$.database = $database;
 
 	// Routes
 		var viewsRouter = $express.Router();
@@ -17,8 +18,12 @@ module.exports = function ( $express, $app, $methods, $config, $global ) {
 		var Auth = require('./Auth')($);
 		var API = require('./API')($);
 
+	// Auth
+		authRouter.post('/webmaster/login', Auth.Webmaster.login);
+		authRouter.delete('/webmaster/logout', Auth.Webmaster.logout);
+
 	// Views
-		// viewsRouter.get('/game', Views.game );
+		viewsRouter.get('/wmaster', Auth.Webmaster.verifySession, Views.webmaster );
 
 	// API
 		// apiRouter.post('/game/start', API.Game.start);

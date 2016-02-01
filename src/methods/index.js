@@ -9,6 +9,10 @@ module.exports = function ($methods, $database, $q, $config, $global) {
 		$.methods = $methods;
 
 	// Methods
+		$methods.SystemData = require('./SystemData')($);
 		$methods.Useful = require('./Useful')($);
+		$methods.Database = require('./Database')($);
+		$methods.Console = require('./Console')($);
 		$methods.Response = require('./Response')($);
+		$methods.Webmaster = require('./Webmaster')($);
 }

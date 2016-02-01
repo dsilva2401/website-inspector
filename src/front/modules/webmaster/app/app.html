@@ -1,0 +1,20 @@
+<div class="cover">
+
+	<!-- Header -->
+		<button class="header-container">WebMaster</button>
+
+	<!-- Left panel -->
+		<div class="left-panel">
+			<div class="items-group" ng-repeat="m in models.modules">
+				<button class="title">{{ m.name }}</button>
+				<button
+					ng-repeat="sm in m.submodules"
+					ng-click="methods.goToSubModule(sm.state)"
+				>{{ sm.name }}</button>
+			</div>
+			<button class="logout" ng-click="methods.logout()">Logout</button>
+		</div>
+
+		<div class="submodule-container" ui-view></div>
+
+</div>
