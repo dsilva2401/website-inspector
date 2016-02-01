@@ -9,17 +9,21 @@
 		// Methods
 			$scope.methods.setModules = function () {
 				$scope.models.modules = [{
-					name: 'Registros de sistema',
+					name: 'System logs',
 					submodules: [{
-						name: 'Reporte general',
+						name: 'Server error details',
+						state: 'systemLogs.serverErrorDetails'
+					}
+					/*{
+						name: 'General report',
 						state: 'systemLogs.general'
 					},{
-						name: 'Errores Servidor',
+						name: 'Server errors',
 						state: 'systemLogs.serverErrors'
 					},{
-						name: 'Errores Cliente',
+						name: 'Client errors',
 						state: 'systemLogs.clientErrors'
-					}]
+					}*/]
 				}]
 			}
 			$scope.methods.goToSubModule = function (state) {

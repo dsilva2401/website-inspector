@@ -1,0 +1,46 @@
+<div class="cover server-error-details">
+
+	<form class="inputs-container" ng-submit="methods.findCode()">
+		<input type="text" placeholder="Error code" ng-model="models.code">
+		<button>Find</button>
+	</form>
+
+	<table ng-if="models.currentServerError">
+		<tr>
+			<th>Status</th>
+			<td>{{ models.currentServerError.status }}</td>
+		</tr>
+		<tr>
+			<th>Timestamp</th>
+			<td>{{ models.currentServerError.createdAt }}</td>
+		</tr>
+		<tr>
+			<th>Route</th>
+			<td>{{ models.currentServerError.url }}</td>
+		</tr>
+		<tr>
+			<th>Error details</th>
+			<td>{{ models.currentServerError.details }}</td>
+		</tr>
+		<tr>
+			<th>Request</th>
+			<td>
+				<table>
+					<tr>
+						<td>Query</td>
+						<td>{{ models.currentServerError.query }}</td>
+					</tr>
+					<tr>
+						<td>Body</td>
+						<td>{{ models.currentServerError.body }}</td>
+					</tr>
+					<tr>
+						<td>Params</td>
+						<td>{{ models.currentServerError.params }}</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+
+</div>

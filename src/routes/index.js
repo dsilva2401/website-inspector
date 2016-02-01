@@ -18,15 +18,19 @@ module.exports = function ( $express, $app, $methods, $config, $global, $databas
 		var Auth = require('./Auth')($);
 		var API = require('./API')($);
 
+	// Middleware
+		authRouter.all('/*', Middleware.startRequest );
+		apiRouter.all('/*', Middleware.startRequest );
+
 	// Auth
 		authRouter.post('/webmaster/login', Auth.Webmaster.login);
 		authRouter.delete('/webmaster/logout', Auth.Webmaster.logout);
 
+	// API
+		apiRouter.get('/server-error/:errorId', API.Logs.getServerErrorDetails);
+
 	// Views
 		viewsRouter.get('/wmaster', Auth.Webmaster.verifySession, Views.webmaster );
-
-	// API
-		// apiRouter.post('/game/start', API.Game.start);
 
 	// Set routers
 		$app.use( viewsRouter );

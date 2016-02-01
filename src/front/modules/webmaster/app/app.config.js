@@ -8,6 +8,10 @@
 			$resourcesProvider.init({
 				resources: {
 
+					ServerError: {
+						route: '/api/v1/server-error/:errorId'
+					},
+
 					Logout: {
 						route: '/auth/v1/webmaster/logout'
 					}
@@ -33,6 +37,11 @@
 					.state('systemLogs.clientErrors', {
 						url: '/client-errors',
 						templateUrl: '/front/modules/webmaster/system-logs/client-errors.html'
+					})
+					.state('systemLogs.serverErrorDetails', {
+						url: '/server-error-details/:errorId',
+						templateUrl: '/front/modules/webmaster/system-logs/server-error-details.html',
+						controller: 'systemLogsServerErrorDetailsController'
 					})
 
 

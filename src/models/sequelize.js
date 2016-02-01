@@ -18,30 +18,43 @@ module.exports = function ($config, $methods, $global, $database) {
 		);
 
 	// Models
-		/*var Person = db.define('Person', {
-			documentType: DataTypes.CHAR,
-			documentNumber: { type: DataTypes.STRING, unique: true },
-			name: DataTypes.STRING,
-			lastname: DataTypes.STRING,
-			phone: DataTypes.STRING,
-			email: { type: DataTypes.STRING, unique: true },
-			sex: DataTypes.CHAR,
-			birthday: DataTypes.DATE,
-			ubigeo: DataTypes.STRING,
-			gvot: DataTypes.STRING
-		});
-
-		var Credential = db.define('Credential', {
-			email: { type: DataTypes.STRING, unique: true },
-			username: { type: DataTypes.STRING, unique: true, allowNull: true },
-			password: DataTypes.STRING,
-			active: { type: DataTypes.BOOLEAN, defaultValue: true }
-		});*/
 
 		var WMSessionKey = db.define('WMSessionKey', {
 			username: DataTypes.STRING,
 			key: { type: DataTypes.STRING, unique: true, allowNull: false }
 		});
+
+		var SuccessResponseLog = db.define('SuccessResponseLog', {
+			PersonId: DataTypes.INTEGER,
+			method: DataTypes.STRING,
+			url: DataTypes.STRING,
+			duration: DataTypes.INTEGER,
+			body: DataTypes.TEXT,
+			params: DataTypes.TEXT,
+			query: DataTypes.TEXT
+		});
+
+		var ClientErrorLog = db.define('ClientErrorLog', {
+			PersonId: DataTypes.INTEGER,
+			method: DataTypes.STRING,
+			url: DataTypes.STRING,
+			status: DataTypes.STRING,
+			details: DataTypes.TEXT,
+			duration: DataTypes.INTEGER
+		});
+
+		var ServerErrorLog = db.define('ServerErrorLog', {
+			PersonId: DataTypes.INTEGER,
+			method: DataTypes.STRING,
+			url: DataTypes.STRING,
+			duration: DataTypes.INTEGER,
+			details: DataTypes.TEXT,
+			query: DataTypes.TEXT,
+			body: DataTypes.TEXT,
+			params: DataTypes.TEXT,
+			status: DataTypes.STRING
+		});
+
 
 	// Relations
 
