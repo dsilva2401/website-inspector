@@ -19,6 +19,25 @@ module.exports = function ($config, $methods, $global, $database) {
 
 	// Models
 
+		var Person = db.define('Person', {
+			name: DataTypes.STRING,
+			lastname: DataTypes.STRING,
+			email: { type: DataTypes.STRING, unique: true },
+			sex: DataTypes.CHAR,
+			birthday: DataTypes.DATE,
+			active: { type: DataTypes.BOOLEAN, defaultValue: true }
+		});
+
+		var Credential = db.define('Credential', {
+			email: { type: DataTypes.STRING, unique: true },
+			username: { type: DataTypes.STRING, unique: true, allowNull: true },
+			password: DataTypes.STRING
+		});
+
+		var SessionKey = db.define('SessionKey', {
+			key: { type: DataTypes.STRING, unique: true, allowNull: false }
+		});
+
 		var WMSessionKey = db.define('WMSessionKey', {
 			username: DataTypes.STRING,
 			key: { type: DataTypes.STRING, unique: true, allowNull: false }
@@ -57,6 +76,8 @@ module.exports = function ($config, $methods, $global, $database) {
 
 
 	// Relations
+		Credential.belongsTo( Person );
+		SessionKey.belongsTo( Person );
 
 	// Sync database
 		db.sync();
