@@ -13,6 +13,7 @@ module.exports = {
 	},
 	publicDir: 'public',
 	frontDir: 'src/front',
+	phantomDataDir: 'phantomdata',
 	rootUser: {
 		name: 'Admin',
 		username: 'admin',

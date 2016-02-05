@@ -31,3 +31,7 @@ node_modules
 
 # Database
 data/*.sqlite
+
+# Phantom data
+phantomdata/logfile.json
+phantomdata/preview.png

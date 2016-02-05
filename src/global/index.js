@@ -9,5 +9,6 @@ module.exports = function ($global, $config) {
 	$global.Sequelize = require('sequelize');
 	$global.path = require('path');
 	$global.fs = require('fs');
+	$global.shelljs = require('shelljs');
 
 }

@@ -10,7 +10,9 @@
 				width: {{ models.divWidth }}px;
 				height: {{ models.divHeight }}px;
 			"
-		></div>
+		>
+			<img width="100%" src="{{ models.websiteData.previewSrc }}">
+		</div>
 
 		<button class="size-width">Width {{models.viewWidth}}</button>
 		<button class="size-height">Height {{models.viewHeight}}</button>
@@ -20,12 +22,23 @@
 
 	</div>
 
-	<div class="details-container"></div>	
+	<div class="details-container">
+		<h3>{{ models.websiteData.title }}</h3>
+		<p>Load speed: {{ models.websiteData.loadSpeed }}</p>
+		<p>Scripts ({{ models.websiteData.scripts.length }}):</p>
+		<ul>
+			<a ng-repeat="s in models.websiteData.scripts" ng-href="{{ s }}">
+				<li>{{ s }}</li>
+			</a>
+		</ul>
+	</div>
 
 	<input class="url-input" ng-model="models.url" placeholder="Website Url">
 
 	<button ng-click="methods.loadWebsiteData()" class="render-btn">Render</button>
 
-	<button ng-if="models.loading" class="loading cover">Cargando..</button>
+	<button ng-if="models.loading" class="loading cover">
+		<img src="/front/resources/loading.gif">
+	</button>
 
 </div>

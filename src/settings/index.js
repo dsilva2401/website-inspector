@@ -15,6 +15,9 @@ module.exports = function ($app, $config, $express, $global, $httpServer) {
 	// Set static folder
 	$app.use( '/public', $express.static($config.publicDir) );
 
+	// Set static folder
+	$app.use( '/phantomdata', $express.static($config.phantomDataDir) );
+
 	// Set front components status folder
 	$app.use('/front', $express.static($config.frontDir));
 

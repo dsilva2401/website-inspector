@@ -38,6 +38,7 @@
 	.screenshots-container .screenshot {
 		position: absolute;
 		background: #333;
+		overflow: auto;
 	}
 
 	.screenshots-container .size-width {
@@ -98,6 +99,7 @@
 		width: calc( 30% - 60px );
 		height: calc( 100% - 60px );
 		background: #fff;
+		overflow: auto;
 	}
 
 	.render-btn {

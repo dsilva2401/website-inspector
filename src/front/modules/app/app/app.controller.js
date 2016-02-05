@@ -27,6 +27,7 @@
 				.then(function (resp) {
 					$scope.models.loading = false;
 					console.log(resp);
+					$scope.models.websiteData = resp.data;
 				})
 				// Error
 				.catch(function (resp) {
