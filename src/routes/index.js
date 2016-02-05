@@ -28,9 +28,11 @@ module.exports = function ( $express, $app, $methods, $config, $global, $databas
 
 	// API
 		apiRouter.get('/server-error/:errorId', API.Logs.getServerErrorDetails);
+		apiRouter.get('/website/data', API.Website.getData);
 
 	// Views
 		viewsRouter.get('/wmaster', Auth.Webmaster.verifySession, Views.webmaster );
+		viewsRouter.get('/', Views.app );
 
 	// Set routers
 		$app.use( viewsRouter );

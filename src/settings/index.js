@@ -13,7 +13,7 @@ module.exports = function ($app, $config, $express, $global, $httpServer) {
 	$app.use( $global.compress() );
 
 	// Set static folder
-	$app.use( $express.static($config.publicDir) );
+	$app.use( '/public', $express.static($config.publicDir) );
 
 	// Set front components status folder
 	$app.use('/front', $express.static($config.frontDir));

@@ -13,5 +13,11 @@ module.exports = function ($) {
 		);
 	}
 
+	r.app = function (req, res) {
+		res.sendFile(
+			$.global.path.join(__dirname,'../../front/modules/app/index.html')
+		);
+	}
+
 	return r;
 }

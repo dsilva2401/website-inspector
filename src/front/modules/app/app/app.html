@@ -1,0 +1,31 @@
+<div class="cover">
+
+	<div class="screenshots-container">
+
+		<div
+			class="screenshot"
+			style="
+				left: {{ models.containerWidth/2 - models.divWidth/2 }}px;
+				top: {{ models.containerHeight/2 - models.divHeight/2 }}px;
+				width: {{ models.divWidth }}px;
+				height: {{ models.divHeight }}px;
+			"
+		></div>
+
+		<button class="size-width">Width {{models.viewWidth}}</button>
+		<button class="size-height">Height {{models.viewHeight}}</button>
+
+		<input type="range" ng-model="models.viewHeight" class="range-height" step="10" min="600" max="1200">
+		<input type="range" ng-model="models.viewWidth" class="range-width" step="10" min="400" max="3200">
+
+	</div>
+
+	<div class="details-container"></div>	
+
+	<input class="url-input" ng-model="models.url" placeholder="Website Url">
+
+	<button ng-click="methods.loadWebsiteData()" class="render-btn">Render</button>
+
+	<button ng-if="models.loading" class="loading cover">Cargando..</button>
+
+</div>

@@ -1,0 +1,119 @@
+/* Classes */
+	.cover {
+		position: absolute;
+		left: 0px;
+		top: 0px;
+		width: 100%;
+		height: 100%;
+	}
+
+/* App */
+	body {
+		background: #eee;
+	}
+
+	.url-input {
+		position: absolute;
+		width: 300px;
+		height: 50px;
+		background: #222;
+		border: none;
+		left: calc( 50% - 150px );
+		top: 0px;
+		color: #eee;
+		font-size: 20px;
+		text-align: center;
+		padding: 0px 30px;
+	}
+
+	.screenshots-container {
+		position: absolute;
+		left: 30px;
+		top: 30px;
+		width: calc( 70% - 60px );
+		height: calc( 100% - 60px );
+		background: #fff;
+	}
+
+	.screenshots-container .screenshot {
+		position: absolute;
+		background: #333;
+	}
+
+	.screenshots-container .size-width {
+		opacity: 0.85;
+		position: absolute;
+		left: 60px;
+		top: 0px;
+		padding: 15px 40px;
+		border: none;
+		background: #aaa;
+		color: #222;
+		-webkit-border-bottom-right-radius: 20px;
+		-webkit-border-bottom-left-radius: 20px;
+		-moz-border-radius-bottomright: 20px;
+		-moz-border-radius-bottomleft: 20px;
+		border-bottom-right-radius: 20px;
+		border-bottom-left-radius: 20px;
+	}
+
+	.screenshots-container .size-height {
+		opacity: 0.85;
+		position: absolute;
+		left: 0px;
+		top: 60px;
+		padding: 15px 40px;
+		border: none;
+		background: #aaa;
+		color: #222;
+		-webkit-border-top-right-radius: 20px;
+		-webkit-border-bottom-right-radius: 20px;
+		-moz-border-radius-topright: 20px;
+		-moz-border-radius-bottomright: 20px;
+		border-top-right-radius: 20px;
+		border-bottom-right-radius: 20px;
+	}
+
+	.screenshots-container .range-width {
+		position: absolute;
+		bottom: 0px;
+		left: calc( 50% - 200px );
+		width: 400px;
+	}
+
+	.screenshots-container .range-height {
+		position: absolute;
+		right: -200px;
+		top: calc( 50%  );
+		width: 400px;
+		-ms-transform: rotate(-90deg); /* IE 9 */
+	    -webkit-transform: rotate(-90deg); /* Chrome, Safari, Opera */
+	    transform: rotate(-90deg);
+	}
+
+	.details-container {
+		position: absolute;
+		right: 30px;
+		top: 30px;
+		width: calc( 30% - 60px );
+		height: calc( 100% - 60px );
+		background: #fff;
+	}
+
+	.render-btn {
+		position: absolute;
+		bottom: 0px;
+		left: calc( 70% - 75px );
+		width: 150px;
+		height: 40px;
+		font-size: 20px;
+		border: none;
+		background: #777;
+		color: #111;
+	}
+
+	.loading {
+		border: none;
+		background: #eee;
+		opacity: 0.7;
+	}
