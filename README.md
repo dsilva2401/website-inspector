@@ -23,7 +23,7 @@ easyinstaller "https://github.com/dsilva2401/website-inspector.git" web-inspecto
 ```bash
 # Install phantomjs
 chmod +x install_phantomjs.sh
-./install_phantomjs.sh
+sudo ./install_phantomjs.sh
 
 #Install dependencies
 npm install
