@@ -1,6 +1,6 @@
 echo "Installing phantomjs"
 chmod +x install_phantomjs.sh
-./install_phantomjs
+./install_phantomjs.sh
 
 echo "Installing npm dependencies.."
 npm install
