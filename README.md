@@ -11,18 +11,25 @@ git clone https://github.com/dsilva2401/website-inspector.git
 cd website-inspector
 ```
 
-### Install PhantomJs
+### Installation
 
+##### Using [`easyinstaller`](https://github.com/dsilva2401/easy-installer)
 ```bash
-chmod +x install_phantomjs.sh
-./install_phantomjs.sh
+easyinstaller "https://github.com/dsilva2401/website-inspector.git" web-inspector
 ```
 
-### Install dependencies
+##### Manually
+
 ```bash
+# Install phantomjs
+chmod +x install_phantomjs.sh
+./install_phantomjs.sh
+
+#Install dependencies
 npm install
 bower install
 ```
+
 
 ### Run app
 ```bash
